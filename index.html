@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZanManna — Redemptive Technology</title>
-  <link rel="icon" href="../assets/icons/favicon.png" type="image/png">
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
@@ -27,7 +27,7 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -42,593 +42,297 @@
       border-bottom: 1px solid rgba(139,122,105,0.12);
     }
 
-    nav img.logo {
-      height: 20px;
-      /* color set in SVG */
-    }
-
+    nav img.logo { height: 20px; }
     .nav-links { display: flex; align-items: center; gap: 36px; }
-
     .nav-links a {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--taupe-dark);
-      text-decoration: none;
-      letter-spacing: -0.01em;
-      transition: color 0.15s;
+      font-size: 13px; font-weight: 400; color: var(--taupe-dark);
+      text-decoration: none; letter-spacing: -0.01em; transition: color 0.15s;
     }
     .nav-links a:hover { color: var(--dark); }
-
     .nav-links .cta {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--cream-light);
-      background: var(--dark);
-      padding: 8px 20px;
-      border-radius: 980px;
-      text-decoration: none;
-      transition: opacity 0.15s;
+      font-size: 13px; font-weight: 500; color: var(--cream-light);
+      background: var(--dark); padding: 8px 20px; border-radius: 980px;
+      text-decoration: none; transition: opacity 0.15s;
     }
     .nav-links .cta:hover { opacity: 0.8; }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero {
-      padding: 160px 40px 120px;
-      text-align: center;
-      max-width: 980px;
-      margin: 0 auto;
+      padding: 160px 40px 120px; text-align: center;
+      max-width: 980px; margin: 0 auto;
     }
-
     .hero-eyebrow {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--taupe);
-      letter-spacing: 0.02em;
-      margin-bottom: 24px;
-      opacity: 0;
-      animation: fadeUp 0.6s ease forwards 0.1s;
+      font-size: 13px; font-weight: 600; color: var(--taupe);
+      letter-spacing: 0.02em; margin-bottom: 24px;
+      opacity: 0; animation: fadeUp 0.6s ease forwards 0.1s;
     }
-
     .hero h1 {
-      font-size: clamp(52px, 7vw, 96px);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.0;
-      color: var(--dark);
-      margin-bottom: 28px;
-      opacity: 0;
-      animation: fadeUp 0.7s ease forwards 0.2s;
+      font-size: clamp(52px, 7vw, 96px); font-weight: 700;
+      letter-spacing: -0.04em; line-height: 1.0; color: var(--dark);
+      margin-bottom: 28px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.2s;
     }
-
     .hero h1 span { color: var(--taupe); }
-
     .hero p {
-      font-size: clamp(17px, 2vw, 21px);
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--taupe-dark);
-      max-width: 580px;
-      margin: 0 auto 48px;
-      letter-spacing: -0.01em;
-      opacity: 0;
-      animation: fadeUp 0.7s ease forwards 0.35s;
+      font-size: clamp(17px, 2vw, 21px); font-weight: 400; line-height: 1.6;
+      color: var(--taupe-dark); max-width: 580px; margin: 0 auto 48px;
+      letter-spacing: -0.01em; opacity: 0; animation: fadeUp 0.7s ease forwards 0.35s;
     }
-
     .hero-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.7s ease forwards 0.5s;
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.7s ease forwards 0.5s;
     }
 
     .btn-dark {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 14px 28px;
-      background: var(--dark);
-      color: var(--cream-light);
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      border-radius: 980px;
-      text-decoration: none;
-      transition: opacity 0.15s;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 14px 28px; background: var(--dark); color: var(--cream-light);
+      font-size: 15px; font-weight: 500; letter-spacing: -0.02em;
+      border-radius: 980px; text-decoration: none; transition: opacity 0.15s;
     }
     .btn-dark:hover { opacity: 0.82; }
-
     .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 14px 28px;
-      background: transparent;
-      color: var(--dark);
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      border-radius: 980px;
-      border: 1.5px solid rgba(44,43,41,0.25);
-      text-decoration: none;
-      transition: border-color 0.15s, color 0.15s;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 14px 28px; background: transparent; color: var(--dark);
+      font-size: 15px; font-weight: 500; letter-spacing: -0.02em;
+      border-radius: 980px; border: 1.5px solid rgba(44,43,41,0.25);
+      text-decoration: none; transition: border-color 0.15s, color 0.15s;
     }
     .btn-outline:hover { border-color: var(--dark); }
 
-    /* ── APP SHOWCASE ── */
+    /* APP SHOWCASE */
     .showcase {
-      margin: 0 40px;
-      background: var(--dark);
-      border-radius: 24px;
-      padding: 80px 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 60px;
-      overflow: hidden;
-      position: relative;
+      margin: 0 40px; background: var(--dark); border-radius: 24px;
+      padding: 80px 60px; display: flex; align-items: center;
+      justify-content: space-between; gap: 60px; overflow: hidden; position: relative;
     }
-
     .showcase::before {
-      content: '';
-      position: absolute;
-      top: -120px; right: -120px;
+      content: ''; position: absolute; top: -120px; right: -120px;
       width: 480px; height: 480px;
       background: radial-gradient(circle, rgba(139,122,105,0.18) 0%, transparent 65%);
-      border-radius: 50%;
-      pointer-events: none;
+      border-radius: 50%; pointer-events: none;
     }
-
     .showcase-left { flex: 1; position: relative; z-index: 2; }
-
     .showcase-kicker {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--taupe);
-      margin-bottom: 20px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--taupe); margin-bottom: 20px;
     }
-
     .showcase-left h2 {
-      font-size: clamp(36px, 4vw, 56px);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      color: var(--cream);
-      margin-bottom: 20px;
+      font-size: clamp(36px, 4vw, 56px); font-weight: 700;
+      letter-spacing: -0.04em; line-height: 1.05; color: var(--cream); margin-bottom: 20px;
     }
-
     .showcase-left h2 span { color: var(--taupe-light); }
-
     .showcase-left p {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.65;
-      color: rgba(245,238,228,0.6);
-      max-width: 420px;
-      letter-spacing: -0.01em;
-      margin-bottom: 36px;
+      font-size: 16px; font-weight: 400; line-height: 1.65;
+      color: rgba(245,238,228,0.6); max-width: 420px;
+      letter-spacing: -0.01em; margin-bottom: 36px;
     }
-
     .showcase-right {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      flex-shrink: 0;
-      position: relative;
-      z-index: 2;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 20px; flex-shrink: 0; position: relative; z-index: 2;
     }
-
     .app-icon-large {
-      width: 120px;
-      height: 120px;
-      border-radius: 26px;
+      width: 120px; height: 120px; border-radius: 26px;
       box-shadow: 0 32px 64px rgba(0,0,0,0.4);
     }
-
-    .app-wordmark-light {
-      height: 24px;
-      filter: brightness(0) invert(1) opacity(0.75);
-    }
-
+    .app-wordmark-light { height: 24px; filter: brightness(0) invert(1) opacity(0.75); }
     .app-tagline-light {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(245,238,228,0.35);
+      font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; color: rgba(245,238,228,0.35);
     }
 
-    /* ── STAT ROW ── */
+    /* STATS */
     .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(139,122,105,0.15);
-      margin: 1px 40px 0;
-      border-radius: 0 0 24px 24px;
-      overflow: hidden;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: rgba(139,122,105,0.15);
+      margin: 1px 40px 0; border-radius: 0 0 24px 24px; overflow: hidden;
     }
-
-    .stat-item {
-      background: var(--dark);
-      padding: 36px 40px;
-      text-align: center;
-    }
-
+    .stat-item { background: var(--dark); padding: 36px 40px; text-align: center; }
     .stat-num {
-      font-size: 36px;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      color: var(--cream);
-      line-height: 1;
-      margin-bottom: 6px;
+      font-size: 36px; font-weight: 700; letter-spacing: -0.04em;
+      color: var(--cream); line-height: 1; margin-bottom: 6px;
     }
+    .stat-label { font-size: 13px; font-weight: 400; color: rgba(245,238,228,0.4); letter-spacing: -0.01em; }
 
-    .stat-label {
-      font-size: 13px;
-      font-weight: 400;
-      color: rgba(245,238,228,0.4);
-      letter-spacing: -0.01em;
-    }
-
-    /* ── SECTION SHARED ── */
-    .section-wrap {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 120px 40px;
-    }
-
+    /* SECTION SHARED */
+    .section-wrap { max-width: 980px; margin: 0 auto; padding: 120px 40px; }
     .section-kicker {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--taupe);
-      margin-bottom: 16px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--taupe); margin-bottom: 16px;
     }
-
     .section-h2 {
-      font-size: clamp(36px, 4vw, 56px);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      color: var(--dark);
-      margin-bottom: 20px;
+      font-size: clamp(36px, 4vw, 56px); font-weight: 700;
+      letter-spacing: -0.04em; line-height: 1.05; color: var(--dark); margin-bottom: 20px;
     }
-
     .section-h2 span { color: var(--taupe); }
-
     .section-body {
-      font-size: 17px;
-      font-weight: 400;
-      line-height: 1.7;
-      color: var(--taupe-dark);
-      letter-spacing: -0.01em;
-      max-width: 560px;
+      font-size: 17px; font-weight: 400; line-height: 1.7;
+      color: var(--taupe-dark); letter-spacing: -0.01em; max-width: 560px;
     }
 
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
+    /* NAME STORY */
+    .name-story { margin-bottom: 0; }
+    .name-grid {
+      display: flex; align-items: center; gap: 24px;
+      margin-top: 48px; flex-wrap: wrap;
     }
+    .name-card {
+      flex: 1; min-width: 200px; background: var(--cream);
+      border: 1px solid rgba(139,122,105,0.15); border-radius: 16px;
+      padding: 36px 32px; transition: border-color 0.2s, transform 0.2s;
+    }
+    .name-card:hover { border-color: var(--taupe); transform: translateY(-3px); }
+    .name-card-result {
+      background: var(--dark); border-color: transparent; text-align: center;
+    }
+    .name-card-result:hover { border-color: var(--taupe); }
+    .name-card-result .name-desc { color: rgba(245,238,228,0.6); }
+    .name-hebrew {
+      font-size: 48px; line-height: 1; color: var(--taupe);
+      margin-bottom: 8px; font-weight: 300;
+    }
+    .name-roman {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--dark); margin-bottom: 12px;
+    }
+    .name-desc { font-size: 14px; line-height: 1.65; color: var(--taupe-dark); letter-spacing: -0.01em; }
+    .name-plus { font-size: 32px; font-weight: 300; color: var(--taupe-light); flex-shrink: 0; }
 
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .pillars { display: flex; flex-direction: column; gap: 0; }
-
     .pillar {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(139,122,105,0.15);
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 28px 0; border-bottom: 1px solid rgba(139,122,105,0.15);
     }
     .pillar:first-child { border-top: 1px solid rgba(139,122,105,0.15); }
-
     .pillar-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--cream);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      width: 40px; height: 40px; border-radius: 10px; background: var(--cream);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
+    .pillar-title { font-size: 15px; font-weight: 600; letter-spacing: -0.02em; color: var(--dark); margin-bottom: 4px; }
+    .pillar-desc { font-size: 14px; font-weight: 400; line-height: 1.6; color: var(--taupe-dark); letter-spacing: -0.01em; }
 
-    .pillar-title {
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--dark);
-      margin-bottom: 4px;
+    /* VERSE */
+    .verse { background: var(--dark); padding: 100px 40px; text-align: center; position: relative; overflow: hidden; }
+    .verse::before {
+      content: '\201C';
+      position: absolute; top: -60px; left: 40px;
+      font-size: 320px; font-weight: 700; line-height: 1;
+      color: rgba(245,238,228,0.04); pointer-events: none; font-family: 'Inter', sans-serif;
     }
-
-    .pillar-desc {
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--taupe-dark);
-      letter-spacing: -0.01em;
-    }
-
-    /* ── VERSE ── */
-    .verse {
-      background: var(--cream);
-      padding: 100px 40px;
-      text-align: center;
-    }
-
     .verse blockquote {
-      font-size: clamp(22px, 3vw, 34px);
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      line-height: 1.5;
-      color: var(--dark);
-      max-width: 740px;
-      margin: 0 auto 20px;
-      font-style: italic;
+      font-size: clamp(22px, 3vw, 34px); font-weight: 300;
+      letter-spacing: -0.02em; line-height: 1.55; color: var(--cream);
+      max-width: 760px; margin: 0 auto 24px; font-style: italic;
+      position: relative; z-index: 1;
     }
-
     .verse cite {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--taupe);
-      font-style: normal;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--taupe); font-style: normal;
+      position: relative; z-index: 1;
+    }
+    .verse-context {
+      margin-top: 20px; font-size: 14px; color: rgba(245,238,228,0.4);
+      letter-spacing: -0.01em; max-width: 480px; margin-left: auto;
+      margin-right: auto; line-height: 1.65; position: relative; z-index: 1;
     }
 
-    /* ── FEATURES ── */
+    /* FEATURES */
     .features-bg { background: var(--cream); }
-
     .features-header {
-      text-align: center;
-      padding: 120px 40px 72px;
-      max-width: 700px;
-      margin: 0 auto;
+      text-align: center; padding: 120px 40px 72px;
+      max-width: 700px; margin: 0 auto;
     }
-
     .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(139,122,105,0.15);
-      margin: 0 40px;
-      border-radius: 16px;
-      overflow: hidden;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: rgba(139,122,105,0.15);
+      margin: 0 40px; border-radius: 16px; overflow: hidden;
     }
-
-    .feature {
-      background: var(--cream-light);
-      padding: 40px 36px;
-      transition: background 0.2s;
-    }
+    .feature { background: var(--cream-light); padding: 40px 36px; transition: background 0.2s; }
     .feature:hover { background: #EDE4D8; }
-
     .feature-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 11px;
-      background: var(--dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
+      width: 44px; height: 44px; border-radius: 11px; background: var(--dark);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
     }
-
-    .feature h3 {
-      font-size: 17px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--dark);
-      margin-bottom: 10px;
-    }
-
-    .feature p {
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 1.65;
-      color: var(--taupe-dark);
-      letter-spacing: -0.01em;
-    }
-
+    .feature h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; color: var(--dark); margin-bottom: 10px; }
+    .feature p { font-size: 14px; font-weight: 400; line-height: 1.65; color: var(--taupe-dark); letter-spacing: -0.01em; }
     .features-footer { padding-bottom: 120px; }
 
-    /* ── COMING SOON ── */
+    /* COMING SOON */
     .coming {
-      margin: 0 40px;
-      border-radius: 24px;
-      background: var(--dark);
-      padding: 100px 80px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
+      margin: 0 40px; border-radius: 24px; background: var(--dark);
+      padding: 100px 80px; display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center; position: relative; overflow: hidden;
     }
-
     .coming::after {
-      content: '';
-      position: absolute;
-      bottom: -100px; left: -100px;
+      content: ''; position: absolute; bottom: -100px; left: -100px;
       width: 400px; height: 400px;
       background: radial-gradient(circle, rgba(139,122,105,0.15) 0%, transparent 65%);
-      border-radius: 50%;
-      pointer-events: none;
+      border-radius: 50%; pointer-events: none;
     }
-
     .coming-left { position: relative; z-index: 2; }
-
     .coming-left h2 {
-      font-size: clamp(36px, 4vw, 56px);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      color: var(--cream);
-      margin-bottom: 20px;
+      font-size: clamp(36px, 4vw, 56px); font-weight: 700;
+      letter-spacing: -0.04em; line-height: 1.05; color: var(--cream); margin-bottom: 20px;
     }
-
     .coming-left h2 span { color: var(--taupe-light); }
-
     .coming-left p {
-      font-size: 16px;
-      line-height: 1.7;
-      color: rgba(245,238,228,0.55);
-      letter-spacing: -0.01em;
-      margin-bottom: 36px;
-      max-width: 400px;
+      font-size: 16px; line-height: 1.7; color: rgba(245,238,228,0.55);
+      letter-spacing: -0.01em; margin-bottom: 36px; max-width: 400px;
     }
-
     .coming-details {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      background: rgba(245,238,228,0.06);
-      border-radius: 12px;
-      overflow: hidden;
+      position: relative; z-index: 2; display: flex; flex-direction: column;
+      gap: 1px; background: rgba(245,238,228,0.06); border-radius: 12px; overflow: hidden;
     }
-
     .coming-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 24px;
-      background: rgba(245,238,228,0.04);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 24px; background: rgba(245,238,228,0.04);
     }
-
-    .coming-row-label {
-      font-size: 12px;
-      font-weight: 500;
-      color: rgba(245,238,228,0.35);
-      letter-spacing: -0.01em;
-    }
-
-    .coming-row-val {
-      font-size: 13px;
-      font-weight: 600;
-      color: rgba(245,238,228,0.75);
-      letter-spacing: -0.01em;
-    }
-
+    .coming-row-label { font-size: 12px; font-weight: 500; color: rgba(245,238,228,0.35); letter-spacing: -0.01em; }
+    .coming-row-val { font-size: 13px; font-weight: 600; color: rgba(245,238,228,0.75); letter-spacing: -0.01em; }
     .coming-row-val.hi { color: var(--taupe-light); }
 
-    /* ── CONTACT ── */
-    .contact-wrap {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 120px 40px;
-    }
-
+    /* CONTACT */
+    .contact-wrap { max-width: 680px; margin: 0 auto; padding: 120px 40px; }
     .contact-wrap .section-h2 { margin-bottom: 12px; }
-
-    .contact-sub {
-      font-size: 17px;
-      color: var(--taupe-dark);
-      line-height: 1.65;
-      letter-spacing: -0.01em;
-      margin-bottom: 56px;
-    }
-
-    .form-field {
-      margin-bottom: 12px;
-    }
-
+    .contact-sub { font-size: 17px; color: var(--taupe-dark); line-height: 1.65; letter-spacing: -0.01em; margin-bottom: 56px; }
+    .form-field { margin-bottom: 12px; }
     .form-field label {
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--taupe);
-      margin-bottom: 8px;
+      display: block; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.04em; text-transform: uppercase; color: var(--taupe); margin-bottom: 8px;
     }
-
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      width: 100%;
-      background: var(--cream);
-      border: 1.5px solid rgba(139,122,105,0.2);
-      border-radius: 10px;
-      padding: 14px 18px;
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 400;
-      color: var(--dark);
-      letter-spacing: -0.01em;
-      outline: none;
-      transition: border-color 0.15s;
-      appearance: none;
+    .form-field input, .form-field select, .form-field textarea {
+      width: 100%; background: var(--cream); border: 1.5px solid rgba(139,122,105,0.2);
+      border-radius: 10px; padding: 14px 18px; font-family: 'Inter', sans-serif;
+      font-size: 15px; font-weight: 400; color: var(--dark); letter-spacing: -0.01em;
+      outline: none; transition: border-color 0.15s; appearance: none;
     }
-
-    .form-field input:focus,
-    .form-field select:focus,
-    .form-field textarea:focus {
-      border-color: var(--taupe);
-    }
-
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--taupe); }
     .form-field textarea { resize: vertical; min-height: 120px; }
-
     .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
     .form-submit {
-      width: 100%;
-      margin-top: 8px;
-      padding: 16px;
-      background: var(--dark);
-      color: var(--cream-light);
-      border: none;
-      border-radius: 980px;
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      cursor: pointer;
-      transition: opacity 0.15s;
+      width: 100%; margin-top: 8px; padding: 16px; background: var(--dark);
+      color: var(--cream-light); border: none; border-radius: 980px;
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+      letter-spacing: -0.01em; cursor: pointer; transition: opacity 0.15s;
     }
     .form-submit:hover { opacity: 0.82; }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
-      margin-top: 80px;
-      border-top: 1px solid rgba(139,122,105,0.12);
-      padding: 32px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
+      margin-top: 80px; border-top: 1px solid rgba(139,122,105,0.12);
+      padding: 32px 40px; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
     }
+    footer img { height: 16px; opacity: 0.4; }
+    footer p { font-size: 12px; font-weight: 400; color: var(--taupe-light); letter-spacing: -0.01em; }
 
-    footer img {
-      height: 16px;
-      /* color set in SVG */
-      opacity: 0.4;
-    }
-
-    footer p {
-      font-size: 12px;
-      font-weight: 400;
-      color: var(--taupe-light);
-      letter-spacing: -0.01em;
-    }
-
-    /* ── ANIMATIONS ── */
+    /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 860px) {
       nav { padding: 0 24px; }
       .nav-links a:not(.cta) { display: none; }
@@ -637,6 +341,9 @@
       .showcase-left p { margin: 0 auto 36px; }
       .stats { margin: 1px 20px 0; border-radius: 0 0 16px 16px; grid-template-columns: 1fr; }
       .section-wrap { padding: 80px 24px; }
+      .name-grid { flex-direction: column; }
+      .name-plus { transform: rotate(90deg); }
+      .name-card { min-width: unset; width: 100%; }
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
       .features-header { padding: 80px 24px 48px; }
       .features-grid { margin: 0 20px; grid-template-columns: 1fr 1fr; }
@@ -645,17 +352,14 @@
       .form-row-2 { grid-template-columns: 1fr; }
       footer { padding: 24px; }
     }
-
-    @media (max-width: 560px) {
-      .features-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 560px) { .features-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <img class="logo" src="../assets/images/zanmanna_logo_dark.svg" alt="ZanManna" />
+  <img class="logo" src="assets/images/zanmanna_logo_dark.svg" alt="ZanManna" />
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#app">Manna App</a>
@@ -683,8 +387,8 @@
     <a href="#app" class="btn-dark">Explore the app ↓</a>
   </div>
   <div class="showcase-right">
-    <img class="app-icon-large" src="../assets/images/manna_app_icon.svg" alt="Manna App" />
-    <img class="app-wordmark-light" src="../assets/images/zanmanna_logo.svg" alt="Manna" />
+    <img class="app-icon-large" src="assets/images/manna_app_icon.svg" alt="Manna App" />
+    <img class="app-wordmark-light" src="assets/images/zanmanna_logo.svg" alt="Manna" />
     <p class="app-tagline-light">Faith · Community · Recovery</p>
   </div>
 </div>
@@ -706,13 +410,40 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="section-wrap">
-    <div class="about-grid">
+
+    <!-- Name Story -->
+    <div class="name-story">
+      <p class="section-kicker">The Name</p>
+      <h2 class="section-h2">More than a name.<br>A <span>declaration.</span></h2>
+      <div class="name-grid">
+        <div class="name-card">
+          <div class="name-hebrew">זָן</div>
+          <div class="name-roman">Zan</div>
+          <div class="name-desc">Hebrew for "to feed, nourish, or sustain" — used in ancient blessings praising God as the One who feeds all.</div>
+        </div>
+        <div class="name-plus">+</div>
+        <div class="name-card">
+          <div class="name-hebrew">מָן</div>
+          <div class="name-roman">Manna</div>
+          <div class="name-desc">The miraculous bread from heaven God provided in the wilderness — daily provision, grace, and true sustenance. (Exodus 16)</div>
+        </div>
+        <div class="name-plus">=</div>
+        <div class="name-card name-card-result">
+          <div class="name-roman" style="font-size:28px; color: var(--cream); margin-bottom: 12px;">zanmanna</div>
+          <div class="name-desc">"Sustaining Manna" — divine nourishment for body, mind, and spirit. Daily provision for every step of the recovery journey.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Who We Are -->
+    <div class="about-grid" style="margin-top: 100px;">
       <div>
         <p class="section-kicker">Who We Are</p>
-        <h2 class="section-h2">Built on love.<br>Designed with <span>dignity.</span></h2>
+        <h2 class="section-h2">Fuelled by love.<br>Built with <span>purpose.</span></h2>
         <div class="section-body">
-          <p>ZanManna is a redemptive technology startup. We believe software can be an act of love — built not for profit, but for people whose lives are being rebuilt.</p><br>
-          <p>We partner with recovery centres, churches, and pastoral teams to create digital environments that honour dignity, protect privacy, and cultivate hope. The person in recovery always comes first.</p>
+          <p>ZanManna is a redemptive technology startup rooted in faith — boldly embracing who we are in Christ while embodying His example of unconditional love.</p><br>
+          <p>We partner with recovery centres, churches, and pastoral teams to create digital environments that honour dignity, protect privacy, and cultivate hope. Just as Christ reached out to everyone with grace and truth, we are committed to supporting every person on their recovery journey — regardless of background or belief.</p><br>
+          <p style="font-style: italic; color: var(--taupe-dark); border-left: 3px solid var(--taupe-light); padding-left: 20px; font-size: 16px; line-height: 1.7;">"A digital table where all are welcome, all are seen, and all are nourished."</p>
         </div>
       </div>
       <div class="pillars">
@@ -743,14 +474,10 @@
           <div class="pillar-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C2B29" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="4"/>
-              <line x1="12" y1="2" x2="12" y2="4"/>
-              <line x1="12" y1="20" x2="12" y2="22"/>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-              <line x1="2" y1="12" x2="4" y2="12"/>
-              <line x1="20" y1="12" x2="22" y2="12"/>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+              <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
             </svg>
           </div>
           <div>
@@ -774,13 +501,15 @@
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- VERSE -->
+<!-- VERSE — John 6:35 -->
 <div class="verse">
-  <blockquote>"He humbled you and let you hunger and fed you with manna... that he might make you know that man does not live by bread alone."</blockquote>
-  <cite>Deuteronomy 8:3</cite>
+  <blockquote>"I am the bread of life. Whoever comes to me will never go hungry, and whoever believes in me will never be thirsty."</blockquote>
+  <cite>Jesus Christ · John 6:35</cite>
+  <p class="verse-context">The manna in the wilderness pointed forward to something greater. Jesus is the true bread from heaven — the sustenance every person in recovery ultimately needs.</p>
 </div>
 
 <!-- FEATURES -->
@@ -928,7 +657,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <img src="../assets/images/zanmanna_logo_dark.svg" alt="ZanManna" />
+  <img src="assets/images/zanmanna_logo_dark.svg" alt="ZanManna" />
   <p>© 2026 ZanManna · Redemptive Technology · Built with love</p>
 </footer>
 
