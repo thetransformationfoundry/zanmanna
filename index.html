@@ -133,10 +133,10 @@
       width: 120px; height: 120px; border-radius: 26px;
       box-shadow: 0 32px 64px rgba(0,0,0,0.4);
     }
-    .app-wordmark-light { height: 24px; filter: brightness(0) invert(1) opacity(0.75); }
+    .app-wordmark-light { height: 24px; filter: brightness(0) saturate(100%) invert(95%) sepia(10%) saturate(300%) hue-rotate(330deg) brightness(103%); }
     .app-tagline-light {
       font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
-      text-transform: uppercase; color: rgba(245,238,228,0.35);
+      text-transform: uppercase; color: var(--cream);
     }
 
     /* SHOWCASE CYCLER */
@@ -163,7 +163,7 @@
     }
     .cycler-logo .app-tagline-light {
       font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
-      text-transform: uppercase; color: rgba(245,238,228,0.35);
+      text-transform: uppercase; color: var(--cream);
     }
     .cycler-logo.hidden {
       opacity: 0; transform: translate(-50%, calc(-50% - 20px));
@@ -704,7 +704,7 @@
     <p class="showcase-kicker">Our First Product</p>
     <h2>Introducing <span>Manna.</span></h2>
     <p>A faith-centered community platform adaptable for churches, recovery centres, NGOs and any organisation walking alongside people. Designed for building community, and strengthening our faith as we walk together.</p>
-    <a href="#app" class="btn-dark">Explore the app ↓</a>
+    <a href="#app" class="btn-support">Explore the app ↓</a>
   </div>
   <div class="showcase-right">
     <img class="app-icon-large" src="assets/images/manna_app_icon.svg" alt="Manna App" />
@@ -932,7 +932,7 @@
       <p class="app-showcase-kicker" id="carouselKicker">Community Wall</p>
       <h2 class="app-showcase-title" id="carouselTitle">Your community,<br>in one <span>place.</span></h2>
       <p class="app-showcase-desc" id="carouselDesc">News, events, guides and spiritual resources curated by your community leaders. Relevant, accessible and always at hand.</p>
-      <a href="#contact" class="btn-dark">Request a demo ↓</a>
+      <a href="#contact" class="btn-support">Request a demo ↓</a>
     </div>
 
     <!-- Right: Phone -->
