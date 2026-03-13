@@ -243,7 +243,7 @@
     /* APP SHOWCASE CAROUSEL */
     .app-showcase-section {
       background: var(--dark); margin: 0 40px 60px;
-      border-radius: 24px; padding: 80px 60px 48px;
+      border-radius: 24px; padding: 80px 0 48px 60px;
       overflow: hidden;
     }
     .app-showcase-inner {
@@ -271,10 +271,12 @@
       transition: opacity 0.3s ease;
     }
     .app-showcase-right {
-      flex-shrink: 0;
+      flex-shrink: 0; align-self: stretch;
+      display: flex; align-items: flex-end;
+      margin-top: -80px;
     }
     .app-screen-img {
-      width: 280px;
+      width: 400px;
       transition: opacity 0.3s ease;
     }
     .app-screen-img img {
@@ -686,7 +688,7 @@
     @media (max-width: 860px) {
       .app-showcase-section {
         margin: 0 20px 40px;
-        padding: 48px 24px 40px;
+        padding: 48px 0 40px 24px;
       }
       .app-showcase-inner {
         flex-direction: column;
@@ -696,12 +698,16 @@
       }
       .app-showcase-left {
         max-width: 100%;
+        padding-right: 24px;
       }
       .app-showcase-left .btn-dark {
         margin: 0 auto;
       }
+      .app-showcase-right {
+        margin-top: 0; align-self: auto;
+      }
       .app-screen-img {
-        width: 220px;
+        width: 280px;
       }
       .carousel-dots {
         margin-top: 28px;
