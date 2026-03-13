@@ -608,19 +608,24 @@
     footer {
       margin-top: 0; background: var(--dark);
       padding: 32px 40px; display: flex; align-items: center;
-      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+      justify-content: space-between; gap: 16px;
     }
     footer img { height: 16px; opacity: 0.9; filter: brightness(0) invert(1); }
     footer p { font-size: 12px; font-weight: 400; color: var(--cream); letter-spacing: -0.01em; }
     .back-to-top {
+      position: fixed; bottom: 32px; right: 32px;
       display: flex; align-items: center; justify-content: center;
       width: 40px; height: 40px; border-radius: 50%;
-      border: 1.5px solid rgba(245,238,228,0.25);
-      color: var(--cream); text-decoration: none;
-      font-size: 16px; transition: all 0.2s ease;
-      flex-shrink: 0;
+      border: 1.5px solid rgba(44,43,41,0.2);
+      background: var(--cream-light);
+      color: var(--dark); text-decoration: none;
+      font-size: 16px; transition: opacity 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      z-index: 999;
+      opacity: 0; pointer-events: none; transform: translateY(8px);
     }
-    .back-to-top:hover { border-color: var(--cream); background: rgba(245,238,228,0.08); }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .back-to-top:hover { border-color: var(--taupe); background: var(--cream); }
 
     /* ANIMATIONS */
     @keyframes fadeUp {
@@ -1059,8 +1064,8 @@
 <footer>
   <img src="assets/images/zanmanna_logo.svg" alt="zanmanna" />
   <p>© 2026 zanmanna · Redemptive Technology · Built with love</p>
-  <a href="#" class="back-to-top" aria-label="Back to top">↑</a>
 </footer>
+<a href="#" class="back-to-top" aria-label="Back to top">↑</a>
 
 
 <!-- Hidden slide content -->
@@ -1137,6 +1142,18 @@
 
   goToSlide(0);
   startTimer();
+
+  // Back to top — show only near bottom
+  var backToTop = document.querySelector('.back-to-top');
+  window.addEventListener('scroll', function() {
+    var scrolled = window.scrollY + window.innerHeight;
+    var total = document.documentElement.scrollHeight;
+    if (scrolled >= total - 200) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  });
 </script>
 </body>
 </html>
