@@ -133,7 +133,8 @@
       width: 120px; height: 120px; border-radius: 26px;
       box-shadow: 0 32px 64px rgba(0,0,0,0.4);
     }
-    .app-wordmark-light { height: 24px; filter: brightness(0) saturate(100%) invert(95%) sepia(10%) saturate(300%) hue-rotate(330deg) brightness(103%); }
+    .app-wordmark-light { height: 40px; filter: brightness(0) saturate(100%) invert(95%) sepia(10%) saturate(300%) hue-rotate(330deg) brightness(103%); }
+    .app-wordmark-text { font-size: 28px; font-weight: 700; letter-spacing: -0.03em; color: var(--cream); margin: 0; }
     .app-tagline-light {
       font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
       text-transform: uppercase; color: var(--cream);
@@ -701,7 +702,7 @@
 
 <!-- NAV -->
 <nav>
-  <img class="logo" src="assets/images/zanmanna_logo_dark.svg" alt="ZanManna" />
+  <a href="#"><img class="logo" src="assets/images/zanmanna_logo_dark.svg" alt="ZanManna" /></a>
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#app">Manna App</a>
@@ -715,8 +716,8 @@
   <h1>Technology<br>built for <span>restoration.</span></h1>
   <p>Built for building community. Bringing hope, love and the good news to everyone through redemptive technology.</p>
   <div class="hero-buttons">
-    <a href="#app" class="btn-dark">Discover Manna ↓</a>
-    <a href="#contact" class="btn-outline">Partner with us</a>
+    <a href="#app" class="btn-dark">Discover Manna App ↓</a>
+    <a href="#name" class="btn-outline">About zanmanna</a>
   </div>
 </section>
 
@@ -731,7 +732,7 @@
   </div>
   <div class="showcase-right">
     <img class="app-icon-large" src="assets/images/manna_app_icon.svg" alt="Manna App" />
-    <img class="app-wordmark-light" src="assets/images/zanmanna_logo.svg" alt="Manna" />
+    <img class="app-wordmark-light" src="assets/images/manna_logo.svg" alt="Manna" />
     <p class="app-tagline-light">Faith · Community · Recovery</p>
   </div>
 </div>
@@ -756,7 +757,7 @@
   <div class="section-wrap">
 
     <!-- Name Story -->
-    <div class="name-story">
+    <div class="name-story" id="name">
       <p class="section-kicker">The Name</p>
       <h2 class="section-h2">More than a name.<br>A <span>declaration.</span></h2>
       <div class="name-grid">
