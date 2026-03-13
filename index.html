@@ -527,6 +527,22 @@
       display: flex; justify-content: space-between; align-items: center;
       padding: 18px 24px; background: rgba(245,238,228,0.04);
     }
+    .coming-ctas {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px;
+    }
+    .btn-support {
+      display: inline-block; padding: 14px 28px;
+      border: 1.5px solid rgba(245,238,228,0.3);
+      border-radius: 980px; font-size: 15px; font-weight: 500;
+      color: var(--cream); text-decoration: none;
+      transition: all 0.2s ease; letter-spacing: -0.01em;
+    }
+    .btn-support:hover { background: rgba(245,238,228,0.08); border-color: rgba(245,238,228,0.6); }
+    .coming-support-note {
+      margin-top: 20px; font-size: 13px; line-height: 1.7;
+      color: rgba(245,238,228,0.4); max-width: 380px;
+      font-style: italic;
+    }
     .coming-row-label { font-size: 12px; font-weight: 500; color: rgba(245,238,228,0.35); letter-spacing: -0.01em; }
     .coming-row-val { font-size: 13px; font-weight: 600; color: rgba(245,238,228,0.75); letter-spacing: -0.01em; }
     .coming-row-val.hi { color: var(--taupe-light); }
@@ -910,31 +926,36 @@
 <!-- COMING SOON -->
 <div class="coming">
   <div class="coming-left">
-    <p class="section-kicker" style="color:var(--taupe-light)">Currently in Development</p>
-    <h2>The table is<br>being <span>set.</span></h2>
-    <p>Launching with Cornerstone Wellness Center in South Africa — our first partner in what we hope will be a growing family of recovery communities worldwide.</p>
-    <a href="#contact" class="btn-dark">Join the journey ↓</a>
+    <p class="section-kicker" style="color:var(--taupe-light)">Launching 2026</p>
+    <h2>Built for your<br>community, your <span>way.</span></h2>
+    <p>Manna is fully customisable to your organisation. Your content, your community, your database. All under your management. Use our global resources as a starting point or build entirely around your own context.</p>
+    <p style="margin-top: 16px; color: rgba(245,238,228,0.6); font-size: 15px; line-height: 1.7;">We are launching with Cornerstone Wellness Center in South Africa — our first partner in what we hope will be a growing family of communities worldwide.</p>
+    <div class="coming-ctas">
+      <a href="#contact" class="btn-dark">Join the journey ↓</a>
+      <a href="#contact" class="btn-support">Support our mission ↓</a>
+    </div>
+    <p class="coming-support-note">We believe every community deserves access to Manna. Your support helps us bring this technology free of charge to organisations that cannot afford licensing.</p>
   </div>
   <div class="coming-details">
     <div class="coming-row">
       <span class="coming-row-label">Platform</span>
-      <span class="coming-row-val">Mobile — iOS & Android</span>
+      <span class="coming-row-val">Mobile, iOS & Android</span>
     </div>
     <div class="coming-row">
       <span class="coming-row-label">Launch Partner</span>
-      <span class="coming-row-val hi">Cornerstone Wellness, SA</span>
+      <span class="coming-row-val hi">Cornerstone Wellness Center, SA</span>
     </div>
     <div class="coming-row">
       <span class="coming-row-label">Launch Year</span>
       <span class="coming-row-val">2026</span>
     </div>
     <div class="coming-row">
-      <span class="coming-row-label">Model</span>
-      <span class="coming-row-val">Template per Organisation</span>
+      <span class="coming-row-label">Content</span>
+      <span class="coming-row-val">Global resources or fully customised</span>
     </div>
     <div class="coming-row">
-      <span class="coming-row-label">Built on</span>
-      <span class="coming-row-val">Glide Apps + Redemptive Design</span>
+      <span class="coming-row-label">Access</span>
+      <span class="coming-row-val">Private, secure, organisation managed</span>
     </div>
   </div>
 </div>
