@@ -42,14 +42,15 @@ zanmanna is a non-profit on a mission to spread the good news and help people fi
 - **Font:** Inter (Google Fonts)
 - **Headlines:** Inter 700, letter-spacing -0.04em
 - **Body:** Inter 400, line-height 1.65–1.75
-- **Labels/Kickers:** Inter 600, uppercase, letter-spacing 0.06em
+- **Labels/Kickers:** Inter 600, uppercase, letter-spacing 0.06em, 12px — applies to all section kickers (`.section-kicker`, `.showcase-kicker`, `.app-showcase-kicker`, `.verse-mission-label`)
 - **Design reference:** Apple.com — clean, modern, generous whitespace
 
 ### Logo Files
 All logos live in `assets/images/`:
 - `zanmanna_logo.svg` — white/cream version (use on dark backgrounds)
 - `zanmanna_logo_dark.svg` — dark version (use on light backgrounds / nav)
-- `manna_app_icon.svg` — Manna app icon
+- `manna_app_icon.svg` — Manna app icon (rounded square)
+- `manna_logo.svg` — Manna wordmark in Elza Bold Oblique (use on dark backgrounds, cream coloured)
 
 ### Writing Rules
 - No em dashes — use full stops or commas instead
@@ -86,15 +87,16 @@ zanmanna-website/
 ├── CNAME                       ← zanmanna.com
 ├── CLAUDE.md                   ← This file
 ├── pages/
+│   ├── thank-you.html          ← Form submission redirect (complete)
 │   ├── manna.html              ← Manna app deep dive (to build)
 │   ├── about.html              ← About zanmanna (to build)
-│   ├── partners.html           ← Partner centres (to build)
-│   └── thank-you.html          ← Form submission redirect (to build)
+│   └── partners.html           ← Partner centres (to build)
 ├── assets/
 │   ├── images/
 │   │   ├── zanmanna_logo.svg
 │   │   ├── zanmanna_logo_dark.svg
 │   │   ├── manna_app_icon.svg
+│   │   ├── manna_logo.svg          ← Manna wordmark (Elza Bold Oblique)
 │   │   ├── manna-in-use.jpg        ← Community photo (people sitting together)
 │   │   └── screenshots/
 │   │       ├── screen-community-wall.png
@@ -120,7 +122,7 @@ zanmanna-website/
 
 ### 1. Nav
 - Fixed, frosted glass (`backdrop-filter: blur(20px)`)
-- `zanmanna_logo_dark.svg` on left
+- `zanmanna_logo_dark.svg` on left, wrapped in `<a>` — clicking scrolls to top and cleans URL via JS
 - Links: About, Manna App
 - "Partner with us" pill CTA — dark background, cream text
 - Hover: background lightens to `#444340`, text stays cream (not opacity-based)
@@ -128,24 +130,28 @@ zanmanna-website/
 
 ### 2. Hero
 - Eyebrow: "Redemptive Technology"
-- Headline: "Technology built for restoration."
+- Headline: "Technology built for restoration." — line break after "Technology" so "built for restoration." is one line on mobile
 - Body: "Built for building community. Bringing hope, love and the good news to everyone through redemptive technology."
-- CTAs: "Discover Manna ↓" (solid dark) + "Partner with us" (outline)
+- CTAs: "Discover Manna App ↓" (solid dark, links to `#app`) + "About zanmanna" (outline, links to `#name`)
 
 ### 3. App Showcase Card (dark)
 - Two separate fully rounded cards with 16px gap
 - Left card: headline + body + "Explore the app ↓" (outlined cream pill)
-- Right card: `manna_app_icon.svg` + `zanmanna_logo.svg` (cream filter) + "Faith · Community · Recovery" (cream)
+- Right card: `manna_app_icon.svg` + `manna_logo.svg` (cream filter, `.app-wordmark-light` at 40px height) + "Faith · Community · Recovery" (cream)
 - Stats row below (separate card): Community Wall / Daily Devotional / Journal & Support
 
 ### 4. About — Name Story
+- Section id: `name` (anchor target for "About zanmanna" hero CTA)
 - Kicker: "The Name"
 - Headline: "More than a name. A declaration."
 - Three cards: זָן + מָן + zanmanna result card (John 6:35)
+- Mobile: cards stack vertically, + and = signs centred between cards (no rotation)
 
 ### 5. About — Who We Are
 - Headline: "Fuelled by love. Built with purpose."
-- Quote: "A digital table where all are welcome, all are seen, and all are nourished."
+- Quote: "A digital table where all are welcome, all are seen, and all are nourished." — 13px italic, matches pillar scripture size
+- Desktop: quote sits below body text in left column
+- Mobile: quote hidden in left column, shown below Community pillar instead
 
 ### 6. Pillars (1 Corinthians 13:13)
 - Scripture band above pillars
@@ -176,17 +182,19 @@ zanmanna-website/
 ### 10. Coming Soon (dark card)
 - Kicker: "Launching 2026"
 - Headline: "Built for your community, your way."
-- Left: text + "Join the journey ↓" (outlined cream pill)
+- Left: text + "Join the journey ↓" (outlined cream pill, left-aligned desktop, centred mobile)
 - Right: `manna-in-use.jpg` (community photo, rounded, object-fit cover) + details card
 - Details card: Platform / Launch Partner / Launch Year / Content / Access
-- Support block: full-width (`grid-column: 1 / -1`), text left + "Support our mission ↓" right (`white-space: nowrap`)
-- Mobile: single column, CTAs stack, support block stacks vertically
+- Support block: full-width (`grid-column: 1 / -1`), cream background with dark text — inverted to pop against dark section. "Support our mission ↓" button is dark-bordered
+- Mobile: single column, CTAs centred, support block stacks vertically
 
 ### 11. Contact Form
 - Kicker: "Get in Touch"
 - Headline: "Partner with zanmanna."
 - Formspree endpoint: `xeerkzwd`
-- Fields: Name, Organisation, Email, Role (dropdown), Message
+- Fields: Name, Organisation, Email, Role (dropdown), Message, GDPR consent checkbox (required)
+- GDPR checkbox: `name="consent"` value="yes", required — user must tick before submitting
+- Submission handled via JS fetch (no page reload) — on success redirects to `/pages/thank-you.html`
 
 ### 12. Footer (dark)
 - Background: `--dark`
@@ -198,17 +206,53 @@ zanmanna-website/
 
 ---
 
+## pages/thank-you.html (Complete)
+
+- Standalone page, no nav or footer
+- Cream background, single centred dark card
+- Card contains: `zanmanna_logo.svg` (cream filter) + thin divider + "Thank you for reaching out." headline + body text + "Back to home ↑" outlined cream pill linking to `../index.html`
+- Same CSS variables and Inter font as index.html
+- Redirected to automatically after successful contact form submission
+
+---
+
+## JavaScript Behaviours (index.html)
+
+### 1. App Showcase Carousel
+- Auto-cycles 6 slides every 7 seconds
+- Updates kicker, title, description and screenshot on each slide
+- Fade transition 0.5s, content swaps at 520ms
+- Dot indicators — clicking any dot jumps to that slide and resets the timer
+
+### 2. Contact Form Submission
+- Intercepts form submit, posts to Formspree via `fetch()`
+- On success: redirects to `/pages/thank-you.html`
+- No paid Formspree plan required — redirect handled client-side
+
+### 3. Clean URL Routing
+- Intercepts all `<a href="#...">` clicks on the page
+- Scrolls to the target section smoothly
+- Replaces the URL hash with a clean path (e.g. `/#contact` becomes `/contact`)
+- Logo click scrolls to top and restores the clean base URL
+
+---
+
 ## Button Styles
 
 ### `.btn-dark` (solid)
 - Dark background, cream text, pill shape
-- Used for: "Discover Manna ↓"
+- Used for: "Discover Manna App ↓"
+
+### `.btn-outline`
+- Transparent background, dark border + text, pill shape
+- Used for: "About zanmanna" (hero)
 
 ### `.btn-support` (outlined cream)
 - Transparent background, cream border + text, pill shape
 - `white-space: nowrap`, `flex-shrink: 0`
 - Used for: "Explore the app ↓", "Request a demo ↓", "Join the journey ↓", "Support our mission ↓"
 - Hover: subtle cream background tint + brighter border
+- Within `.coming-support-block`: colour overridden to dark border + dark text (cream background context)
 
 ### `.back-to-top`
 - Outlined circle, cream border + arrow
@@ -223,7 +267,7 @@ zanmanna-website/
 - **Domain:** zanmanna.com (registered via Squarespace)
 - **DNS:** 4 x A records + CNAME → GitHub Pages
 - **HTTPS:** Enforced via GitHub Pages
-- **Forms:** Formspree (endpoint: `xeerkzwd`)
+- **Forms:** Formspree (endpoint: `xeerkzwd`) — redirect handled client-side via JS, no paid plan needed
 - **Fonts:** Google Fonts (Inter)
 - **No frameworks** — plain HTML, CSS, JavaScript only
 - **No build tools** — files served as-is
@@ -234,7 +278,6 @@ zanmanna-website/
 
 | Page | Priority | Notes |
 |------|----------|-------|
-| `pages/thank-you.html` | High | Replace Formspree default redirect |
 | `pages/manna.html` | High | Deep dive — lead with mission first |
 | `pages/about.html` | Medium | zanmanna story and theology |
 | `pages/partners.html` | Medium | For rehab centres and organisations |
@@ -253,4 +296,4 @@ zanmanna-website/
 
 ---
 
-*Last updated: Session — zanmanna.com website refinements (footer, carousel, CTAs, features grid, mobile responsive, coming soon section)*
+*Last updated: Session — mobile fixes, thank-you page, GDPR consent, clean URL routing, manna_logo.svg, support block styling, kicker consistency*
