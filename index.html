@@ -1035,8 +1035,7 @@
     <p class="section-kicker">Get in Touch</p>
     <h2 class="section-h2">Partner with <span>zanmanna.</span></h2>
     <p class="contact-sub">Whether you lead a recovery centre, a church, a pastoral team or simply share our heart, we'd love to hear from you.</p>
-    <form action="https://formspree.io/f/xeerkzwd" method="POST">
-      <input type="hidden" name="_next" value="https://zanmanna.com/pages/thank-you.html" />
+    <form id="contact-form" action="https://formspree.io/f/xeerkzwd" method="POST">
       <div class="form-row-2">
         <div class="form-field">
           <label>Your Name</label>
@@ -1157,6 +1156,23 @@
   startTimer();
 
 
+</script>
+
+<script>
+  var contactForm = document.getElementById('contact-form');
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var data = new FormData(contactForm);
+    fetch(contactForm.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res) {
+      if (res.ok) {
+        window.location.href = '/pages/thank-you.html';
+      }
+    });
+  });
 </script>
 </body>
 </html>
