@@ -243,12 +243,13 @@
     /* APP SHOWCASE CAROUSEL */
     .app-showcase-section {
       background: var(--dark); margin: 0 40px 60px;
-      border-radius: 24px; padding: 80px 60px 48px;
-      overflow: hidden;
+      border-radius: 24px; padding: 80px 0 48px 60px;
+      overflow: hidden; position: relative;
     }
     .app-showcase-inner {
       display: flex; align-items: center;
       justify-content: space-between; gap: 60px;
+      padding-right: 460px;
     }
     .app-showcase-left {
       flex: 1; max-width: 420px;
@@ -271,10 +272,11 @@
       transition: opacity 0.3s ease;
     }
     .app-showcase-right {
-      flex-shrink: 0;
+      position: absolute; right: 0; top: 0; bottom: 0;
+      display: flex; align-items: flex-end;
     }
     .app-screen-img {
-      width: 280px;
+      width: 400px;
       transition: opacity 0.3s ease;
     }
     .app-screen-img img {
@@ -686,22 +688,25 @@
     @media (max-width: 860px) {
       .app-showcase-section {
         margin: 0 20px 40px;
-        padding: 48px 24px 40px;
+        padding: 48px 24px 0;
+        display: flex; flex-direction: column;
       }
       .app-showcase-inner {
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-        text-align: center;
+        padding-right: 0; text-align: center;
       }
       .app-showcase-left {
-        max-width: 100%;
+        max-width: 100%; padding-right: 0;
       }
       .app-showcase-left .btn-dark {
         margin: 0 auto;
       }
+      .app-showcase-right {
+        position: relative; top: auto; bottom: auto; right: auto;
+        display: flex; justify-content: center; align-items: flex-end;
+        margin-top: 32px; width: 100%;
+      }
       .app-screen-img {
-        width: 220px;
+        width: 100%; max-width: 460px;
       }
       .carousel-dots {
         margin-top: 28px;
@@ -962,21 +967,12 @@
 <!-- APP SHOWCASE CAROUSEL -->
 <div class="app-showcase-section">
   <div class="app-showcase-inner">
-
-    <!-- Left: Text -->
     <div class="app-showcase-left">
       <p class="app-showcase-kicker" id="carouselKicker">Community Wall</p>
       <h2 class="app-showcase-title" id="carouselTitle">Your community,<br>in one <span>place.</span></h2>
       <p class="app-showcase-desc" id="carouselDesc">News, events, guides and spiritual resources curated by your community leaders. Relevant, accessible and always at hand.</p>
       <a href="#contact" class="btn-support">Request a demo ↓</a>
     </div>
-
-    <!-- Right: Phone -->
-    <div class="app-showcase-right">
-      <div class="app-screen-img" id="carouselScreen">
-      </div>
-    </div>
-
   </div>
 
   <!-- Dots -->
@@ -987,6 +983,11 @@
     <button class="carousel-dot" data-index="3"></button>
     <button class="carousel-dot" data-index="4"></button>
     <button class="carousel-dot" data-index="5"></button>
+  </div>
+
+  <!-- Phone -->
+  <div class="app-showcase-right">
+    <div class="app-screen-img" id="carouselScreen"></div>
   </div>
 </div>
 
