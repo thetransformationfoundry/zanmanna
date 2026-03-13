@@ -713,7 +713,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#"><img class="logo" src="assets/images/zanmanna_logo_dark.svg" alt="ZanManna" /></a>
+  <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'',window.location.pathname);return false;"><img class="logo" src="assets/images/zanmanna_logo_dark.svg" alt="ZanManna" /></a>
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#app">Manna App</a>
@@ -1179,6 +1179,21 @@
         window.location.href = '/pages/thank-you.html';
       }
     });
+  });
+</script>
+
+<script>
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    var hash = link.getAttribute('href');
+    if (hash === '#') return;
+    var target = document.querySelector(hash);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+    var cleanPath = hash.replace('#', '/');
+    history.replaceState(null, '', cleanPath);
   });
 </script>
 </body>
