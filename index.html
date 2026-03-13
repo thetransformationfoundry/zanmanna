@@ -610,6 +610,9 @@
       letter-spacing: -0.01em; cursor: pointer; transition: opacity 0.15s;
     }
     .form-submit:hover { opacity: 0.82; }
+    .form-consent { display: flex; align-items: flex-start; gap: 12px; margin-top: 16px; margin-bottom: 4px; }
+    .form-consent input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; accent-color: var(--dark); cursor: pointer; }
+    .form-consent label { font-size: 12px; line-height: 1.6; color: var(--taupe-dark); text-transform: none; letter-spacing: 0; font-weight: 400; cursor: pointer; }
 
     /* FOOTER */
     footer {
@@ -1066,6 +1069,10 @@
       <div class="form-field">
         <label>Message</label>
         <textarea name="message" placeholder="Tell us about your community and how we might walk together..."></textarea>
+      </div>
+      <div class="form-consent">
+        <input type="checkbox" id="gdpr-consent" name="consent" value="yes" required />
+        <label for="gdpr-consent">I agree to be contacted by zanmanna regarding my enquiry. We will only use your details to respond to you and will never share them with third parties.</label>
       </div>
       <button type="submit" class="form-submit">Send message</button>
     </form>
