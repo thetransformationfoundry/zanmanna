@@ -113,7 +113,7 @@
     .showcase-left { flex: 1; position: relative; z-index: 2; }
     .showcase-kicker {
       font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--taupe); margin-bottom: 20px;
+      text-transform: uppercase; color: var(--taupe); margin-bottom: 16px;
     }
     .showcase-left h2 {
       font-size: clamp(36px, 4vw, 56px); font-weight: 700;
@@ -423,6 +423,7 @@
     .name-plus { font-size: 32px; font-weight: 300; color: var(--taupe-light); flex-shrink: 0; display: flex; align-items: center; }
 
     /* ABOUT */
+    .about-tagline-mobile { display: none; }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .pillars { display: flex; flex-direction: column; gap: 0; }
     .pillar {
@@ -463,7 +464,7 @@
       position: relative; z-index: 1;
     }
     .verse-mission-label {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
       text-transform: uppercase; color: var(--taupe-light);
       margin-bottom: 10px; margin-top: 36px;
     }
@@ -543,14 +544,19 @@
     .coming-support-block {
       display: flex; flex-direction: row; align-items: center;
       justify-content: space-between; gap: 24px;
-      padding: 24px; background: rgba(245,238,228,0.04);
-      border: 1px solid rgba(245,238,228,0.08);
-      border-radius: 12px; margin-top: 0;
+      padding: 28px 32px; background: var(--cream);
+      border: none; border-radius: 16px; margin-top: 0;
       grid-column: 1 / -1;
+    }
+    .coming-support-block .btn-support {
+      color: var(--dark); border-color: rgba(44,43,41,0.3);
+    }
+    .coming-support-block .btn-support:hover {
+      background: rgba(44,43,41,0.08); border-color: var(--dark);
     }
     .coming-support-note {
       font-size: 13px; line-height: 1.7;
-      color: rgba(245,238,228,0.5);
+      color: var(--taupe-dark);
       font-style: italic; margin: 0;
     }
     .coming-photo {
@@ -644,6 +650,8 @@
       .name-plus { transform: none; justify-content: center; padding: 4px 0; }
       .name-card { min-width: unset; width: 100%; }
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-tagline { display: none; }
+      .about-tagline-mobile { display: block; margin-top: 24px; }
       .features-sub {
       font-size: 16px; color: var(--taupe);
       margin-top: 12px; font-weight: 400; letter-spacing: -0.01em;
@@ -653,8 +661,8 @@
       .coming { margin: 0 20px; padding: 48px 24px; grid-template-columns: 1fr; gap: 32px; }
       .coming-left h2 { font-size: 36px; }
       .coming-left p { font-size: 15px; margin-bottom: 24px; }
-      .coming-ctas { flex-direction: column; align-items: flex-start; }
-      .coming-support-block { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .coming-ctas { flex-direction: column; align-items: center; }
+      .coming-support-block { flex-direction: column; align-items: center; gap: 16px; }
       .coming-row-val { text-align: right; font-size: 12px; }
       .coming-row-label { font-size: 11px; }
       .coming-row { padding: 14px 16px; }
@@ -788,7 +796,7 @@
         <div class="section-body">
           <p>zanmanna is a non-profit on a mission to spread the good news and help people find, build and grow in community through technology that doesn't replace but supports building healthy communities. We don't just build apps and digital solutions. We connect people to finding hope, family, love and freedom as we follow Jesus Christ together.</p><br>
           <p>From recovery centres to churches to NGOs, wherever community is forming, we want to help it flourish. Because true discipleship is formed together.</p><br>
-          <p style="font-style: italic; color: var(--taupe-dark); border-left: 3px solid var(--taupe-light); padding-left: 20px; font-size: 16px; line-height: 1.7;">"A digital table where all are welcome, all are seen, and all are nourished."</p>
+          <p class="about-tagline" style="font-style: italic; color: var(--taupe-dark); border-left: 3px solid var(--taupe-light); padding-left: 20px; font-size: 13px; line-height: 1.7;">"A digital table where all are welcome, all are seen, and all are nourished."</p>
         </div>
       </div>
       <div class="pillars">
@@ -855,6 +863,7 @@
             <div class="pillar-desc">Jesus sent his disciples out two by two. We believe we are made for community — we build technology that draws people closer together, not further apart.</div>
           </div>
         </div>
+        <p class="about-tagline-mobile" style="font-style: italic; color: var(--taupe-dark); border-left: 3px solid var(--taupe-light); padding-left: 20px; font-size: 13px; line-height: 1.7;">"A digital table where all are welcome, all are seen, and all are nourished."</p>
       </div>
     </div>
 
