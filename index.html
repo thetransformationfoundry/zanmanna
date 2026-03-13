@@ -100,7 +100,7 @@
 
     /* APP SHOWCASE */
     .showcase {
-      margin: 0 40px; background: var(--dark); border-radius: 24px;
+      background: var(--dark); border-radius: 24px;
       padding: 80px 60px; display: flex; align-items: center;
       justify-content: space-between; gap: 60px; overflow: hidden; position: relative;
     }
@@ -139,11 +139,251 @@
       text-transform: uppercase; color: rgba(245,238,228,0.35);
     }
 
+    /* SHOWCASE CYCLER */
+    .showcase-cycler {
+      position: relative;
+      width: 280px; height: 420px;
+      flex-shrink: 0;
+      display: flex; align-items: flex-end; justify-content: center;
+      overflow: hidden;
+    }
+    .cycler-logo {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .cycler-logo img.app-icon-large {
+      width: 100px; height: 100px; border-radius: 22px;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.5);
+    }
+    .cycler-logo img.app-wordmark-light {
+      height: 20px; filter: brightness(0) invert(1) opacity(0.7);
+    }
+    .cycler-logo .app-tagline-light {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; color: rgba(245,238,228,0.35);
+    }
+    .cycler-logo.hidden {
+      opacity: 0; transform: translate(-50%, calc(-50% - 20px));
+      pointer-events: none;
+    }
+    .cycler-phone {
+      position: absolute;
+      bottom: -100%;
+      width: 240px;
+      background: #1a1a1a;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+      transition: bottom 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .cycler-phone.visible { bottom: -20px; }
+    .cycler-phone-notch {
+      background: #1a1a1a;
+      display: flex; justify-content: center;
+      padding: 10px 0 6px;
+    }
+    .cycler-phone-pill {
+      width: 80px; height: 26px;
+      background: #000; border-radius: 20px;
+    }
+    .cycler-phone-statusbar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 2px 20px 8px;
+      font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.7);
+    }
+    .cycler-phone-screen {
+      background: #f5f5f5;
+      min-height: 300px;
+      padding: 16px;
+    }
+    .cycler-phone-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .cycler-phone-topbar-title {
+      font-size: 13px; font-weight: 700; color: #1a1a1a;
+    }
+    .cycler-phone-card {
+      background: #fff; border-radius: 12px;
+      padding: 12px; margin-bottom: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .cycler-phone-card-label {
+      font-size: 9px; font-weight: 600; text-transform: uppercase;
+      color: #8B7A69; letter-spacing: 0.05em; margin-bottom: 6px;
+    }
+    .cycler-phone-card-title {
+      font-size: 12px; font-weight: 700; color: #2C2B29; margin-bottom: 4px;
+    }
+    .cycler-phone-card-body {
+      font-size: 10px; color: #888; line-height: 1.5;
+    }
+    .cycler-phone-pill-btn {
+      display: inline-block; margin-top: 8px;
+      background: #2C2B29; color: #fff;
+      font-size: 9px; font-weight: 600;
+      padding: 4px 10px; border-radius: 20px;
+    }
+    .cycler-phone-verse {
+      background: #2C2B29; border-radius: 12px;
+      padding: 14px; margin-bottom: 10px; text-align: center;
+    }
+    .cycler-phone-verse-text {
+      font-size: 11px; font-style: italic; color: #F5EEE4; line-height: 1.6;
+    }
+    .cycler-phone-verse-ref {
+      font-size: 9px; color: #8B7A69; margin-top: 6px;
+    }
+
+    /* APP SHOWCASE CAROUSEL */
+    .app-showcase-section {
+      background: var(--dark); margin: 0 40px 60px;
+      border-radius: 24px; padding: 80px 60px 48px;
+      overflow: hidden;
+    }
+    .app-showcase-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 60px;
+    }
+    .app-showcase-left {
+      flex: 1; max-width: 420px;
+    }
+    .app-showcase-kicker {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--taupe);
+      margin-bottom: 16px;
+    }
+    .app-showcase-title {
+      font-size: clamp(28px, 3.5vw, 44px); font-weight: 700;
+      letter-spacing: -0.04em; line-height: 1.05;
+      color: var(--cream); margin-bottom: 20px;
+    }
+    .app-showcase-title span { color: var(--taupe-light); }
+    .app-showcase-desc {
+      font-size: 15px; line-height: 1.7;
+      color: rgba(245,238,228,0.6); margin-bottom: 36px;
+      letter-spacing: -0.01em;
+      transition: opacity 0.3s ease;
+    }
+    .app-showcase-right {
+      flex-shrink: 0;
+    }
+    .app-phone-frame {
+      width: 260px;
+      background: #1a1a1a;
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    }
+    .app-phone-notch {
+      display: flex; justify-content: center;
+      padding: 12px 0 6px; background: #1a1a1a;
+    }
+    .app-phone-pill {
+      width: 80px; height: 26px;
+      background: #000; border-radius: 20px;
+    }
+    .app-phone-screen {
+      background: #f0ece6;
+      min-height: 420px;
+      transition: opacity 0.3s ease;
+      overflow: hidden;
+    }
+    .app-phone-screen img {
+      width: 100%; display: block;
+    }
+    /* Placeholder screen styles */
+    .placeholder-screen {
+      padding: 20px 16px;
+    }
+    .placeholder-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .placeholder-topbar-title {
+      font-size: 14px; font-weight: 700; color: #2C2B29;
+    }
+    .placeholder-card {
+      background: #fff; border-radius: 12px;
+      padding: 14px; margin-bottom: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .placeholder-card-label {
+      font-size: 9px; font-weight: 600; text-transform: uppercase;
+      color: #8B7A69; letter-spacing: 0.05em; margin-bottom: 6px;
+    }
+    .placeholder-card-title {
+      font-size: 13px; font-weight: 700; color: #2C2B29; margin-bottom: 4px;
+    }
+    .placeholder-card-body {
+      font-size: 11px; color: #888; line-height: 1.5;
+    }
+    .placeholder-verse {
+      background: #2C2B29; border-radius: 12px;
+      padding: 16px; margin-bottom: 10px; text-align: center;
+    }
+    .placeholder-verse-text {
+      font-size: 11px; font-style: italic; color: #F5EEE4; line-height: 1.6;
+    }
+    .placeholder-verse-ref {
+      font-size: 9px; color: #8B7A69; margin-top: 6px;
+    }
+    .placeholder-line {
+      height: 8px; border-radius: 4px;
+      background: rgba(44,43,41,0.1); margin-bottom: 8px;
+    }
+    .placeholder-line.wide { width: 90%; }
+    .placeholder-line.medium { width: 65%; }
+    .placeholder-line.short { width: 40%; }
+    .placeholder-avatar-row {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+    }
+    .placeholder-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: #C4B5A5; flex-shrink: 0;
+    }
+    .placeholder-tag {
+      display: inline-block; background: #F5EEE4;
+      border-radius: 20px; padding: 3px 10px;
+      font-size: 9px; font-weight: 600; color: #8B7A69;
+      margin-right: 4px; margin-bottom: 6px;
+    }
+    /* Dots */
+    .carousel-dots {
+      display: flex; justify-content: center;
+      gap: 8px; margin-top: 40px;
+    }
+    .carousel-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(245,238,228,0.2); border: none;
+      cursor: pointer; transition: all 0.3s ease; padding: 0;
+    }
+    .carousel-dot.active {
+      background: var(--cream); width: 24px; border-radius: 4px;
+    }
+
     /* STATS */
     .stats {
       display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 1px; background: rgba(139,122,105,0.15);
-      margin: 1px 40px 0; border-radius: 0 0 24px 24px; overflow: hidden;
+      margin: 16px 40px 0; border-radius: 24px; overflow: hidden;
+    }
+    .showcase-stats-wrap {
+      margin: 0 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .showcase-stats-wrap .showcase {
+      margin: 0;
+    }
+    .showcase-stats-wrap .stats {
+      margin: 0;
     }
     .stat-item { background: var(--dark); padding: 36px 40px; text-align: center; }
     .stat-num {
@@ -208,6 +448,12 @@
       width: 40px; height: 40px; border-radius: 10px; background: var(--cream);
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
+    .pillar-scripture {
+      font-size: 13px; font-style: italic;
+      color: var(--taupe); line-height: 1.7;
+      border-left: 3px solid var(--taupe-light);
+      padding-left: 16px; margin-bottom: 8px;
+    }
     .pillar-title { font-size: 15px; font-weight: 600; letter-spacing: -0.02em; color: var(--dark); margin-bottom: 4px; }
     .pillar-desc { font-size: 14px; font-weight: 400; line-height: 1.6; color: var(--taupe-dark); letter-spacing: -0.01em; }
 
@@ -230,6 +476,11 @@
       text-transform: uppercase; color: var(--taupe); font-style: normal;
       position: relative; z-index: 1;
     }
+    .verse-mission-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--taupe-light);
+      margin-bottom: 10px; margin-top: 36px;
+    }
     .verse-context {
       margin-top: 20px; font-size: 14px; color: rgba(245,238,228,0.4);
       letter-spacing: -0.01em; max-width: 480px; margin-left: auto;
@@ -238,6 +489,10 @@
 
     /* FEATURES */
     .features-bg { background: var(--cream); }
+    .features-sub {
+      font-size: 16px; color: var(--taupe);
+      margin-top: 12px; font-weight: 400; letter-spacing: -0.01em;
+    }
     .features-header {
       text-align: center; padding: 120px 40px 72px;
       max-width: 700px; margin: 0 auto;
@@ -345,7 +600,11 @@
       .name-plus { transform: rotate(90deg); }
       .name-card { min-width: unset; width: 100%; }
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      .features-header { padding: 80px 24px 48px; }
+      .features-sub {
+      font-size: 16px; color: var(--taupe);
+      margin-top: 12px; font-weight: 400; letter-spacing: -0.01em;
+    }
+    .features-header { padding: 80px 24px 48px; }
       .features-grid { margin: 0 20px; grid-template-columns: 1fr 1fr; }
       .coming { margin: 0 20px; padding: 64px 32px; grid-template-columns: 1fr; gap: 40px; }
       .contact-wrap { padding: 80px 24px; }
@@ -371,7 +630,7 @@
 <section class="hero">
   <p class="hero-eyebrow">Redemptive Technology</p>
   <h1>Technology built<br>for <span>restoration.</span></h1>
-  <p>ZanManna builds faith-centered digital tools for addiction recovery communities — walking alongside people as they find their way back.</p>
+  <p>Built for building community. Bringing hope, love and the good news to everyone through redemptive technology.</p>
   <div class="hero-buttons">
     <a href="#app" class="btn-dark">Discover Manna ↓</a>
     <a href="#contact" class="btn-outline">Partner with us</a>
@@ -379,11 +638,12 @@
 </section>
 
 <!-- APP SHOWCASE -->
+<div class="showcase-stats-wrap">
 <div class="showcase">
   <div class="showcase-left">
     <p class="showcase-kicker">Our First Product</p>
-    <h2>Meet <span>Manna.</span></h2>
-    <p>A faith-centered mobile app for people in residential addiction recovery — daily devotionals, community prayer, private journaling, and crisis support.</p>
+    <h2>Introducing <span>Manna.</span></h2>
+    <p>A faith-centered community platform adaptable for churches, recovery centres, NGOs and any organisation walking alongside people. Designed for building community, and strengthening our faith as we walk together.</p>
     <a href="#app" class="btn-dark">Explore the app ↓</a>
   </div>
   <div class="showcase-right">
@@ -394,17 +654,18 @@
 </div>
 <div class="stats">
   <div class="stat-item">
-    <div class="stat-num">31,105</div>
-    <div class="stat-label">Bible verses, always available</div>
+    <div class="stat-num" style="font-size:22px; padding-top:4px;">Community Wall</div>
+    <div class="stat-label">Resources & shared support</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">8 mo</div>
-    <div class="stat-label">Full program support</div>
+    <div class="stat-num" style="font-size:22px; padding-top:4px;">Daily Devotional</div>
+    <div class="stat-label">Prayer support & full Bible</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">∞</div>
-    <div class="stat-label">Hope, by design</div>
+    <div class="stat-num" style="font-size:22px; padding-top:4px;">Journal & Support</div>
+    <div class="stat-label">Private reflection & crisis care</div>
   </div>
+</div>
 </div>
 
 <!-- ABOUT -->
@@ -425,7 +686,7 @@
         <div class="name-card">
           <div class="name-hebrew">מָן</div>
           <div class="name-roman">Manna</div>
-          <div class="name-desc">The miraculous bread from heaven God provided in the wilderness — daily provision, grace, and true sustenance. (Exodus 16)</div>
+          <div class="name-desc">The miraculous bread from heaven God provided in the wilderness. Daily provision, grace, and true sustenance. (Exodus 16)</div>
         </div>
         <div class="name-plus">=</div>
         <div class="name-card name-card-result">
@@ -441,39 +702,48 @@
         <p class="section-kicker">Who We Are</p>
         <h2 class="section-h2">Fuelled by love.<br>Built with <span>purpose.</span></h2>
         <div class="section-body">
-          <p>ZanManna is a redemptive technology startup rooted in faith — boldly embracing who we are in Christ while embodying His example of unconditional love.</p><br>
-          <p>We partner with recovery centres, churches, and pastoral teams to create digital environments that honour dignity, protect privacy, and cultivate hope. Just as Christ reached out to everyone with grace and truth, we are committed to supporting every person on their recovery journey — regardless of background or belief.</p><br>
+          <p>zanmanna is a non-profit on a mission to spread the good news and help people find, build and grow in community through technology that doesn't replace but supports building healthy communities. We don't just build apps and digital solutions. We connect people to finding hope, family, love and freedom as we follow Jesus Christ together.</p><br>
+          <p>From recovery centres to churches to NGOs, wherever community is forming, we want to help it flourish. Because true discipleship is formed together.</p><br>
           <p style="font-style: italic; color: var(--taupe-dark); border-left: 3px solid var(--taupe-light); padding-left: 20px; font-size: 16px; line-height: 1.7;">"A digital table where all are welcome, all are seen, and all are nourished."</p>
         </div>
       </div>
       <div class="pillars">
+        <div class="pillar-scripture">"And now these three remain: faith, hope and love. But the greatest of these is love." — 1 Corinthians 13:13</div>
+
+        <!-- 1. Love -->
         <div class="pillar">
           <div class="pillar-icon">
-            <svg width="18" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C2B29" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#2C2B29" stroke="#2C2B29" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
             </svg>
           </div>
           <div>
-            <div class="pillar-title">Dignity</div>
-            <div class="pillar-desc">Every person is seen, named, and honoured — never reduced to a status or a number.</div>
+            <div class="pillar-title">Love</div>
+            <div class="pillar-desc">It's our foundation. Everything we build — every feature, every decision, every line of code — flows from love.</div>
           </div>
         </div>
+
+        <!-- 2. Faith -->
         <div class="pillar">
           <div class="pillar-icon">
-            <svg width="18" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C2B29" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Dark stone rolled aside -->
+              <circle cx="16" cy="10" r="9" fill="#2C2B29"/>
+              <!-- Light empty tomb opening -->
+              <circle cx="10" cy="10" r="9" fill="var(--cream-light)" stroke="#2C2B29" stroke-width="1.5"/>
             </svg>
           </div>
           <div>
-            <div class="pillar-title">Privacy</div>
-            <div class="pillar-desc">Personal reflections are sacred. We build with protection, not extraction.</div>
+            <div class="pillar-title">Faith</div>
+            <div class="pillar-desc">We build from our hope and trust in our identity in Christ. Led by the Holy Spirit, technology is our tool — the Gospel is our mission.</div>
           </div>
         </div>
+
+        <!-- 3. Hope -->
         <div class="pillar">
           <div class="pillar-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C2B29" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="4"/>
+              <circle cx="12" cy="12" r="4" fill="#2C2B29"/>
               <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
               <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
               <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
@@ -482,21 +752,23 @@
           </div>
           <div>
             <div class="pillar-title">Hope</div>
-            <div class="pillar-desc">Every screen, every word, every interaction points toward restoration.</div>
+            <div class="pillar-desc">We truly believe that whoever knocks, the door will be opened. We build technology on the hope we receive from love and faith.</div>
           </div>
         </div>
+
+        <!-- 4. Community -->
         <div class="pillar">
           <div class="pillar-icon">
             <svg width="22" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C2B29" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
+              <circle cx="9" cy="7" r="4" fill="#2C2B29"/>
               <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
               <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
             </svg>
           </div>
           <div>
             <div class="pillar-title">Community</div>
-            <div class="pillar-desc">Recovery is not a solo journey. We build tools for communities who carry each other.</div>
+            <div class="pillar-desc">Jesus sent his disciples out two by two. We believe we are made for community — we build technology that draws people closer together, not further apart.</div>
           </div>
         </div>
       </div>
@@ -508,17 +780,30 @@
 <!-- VERSE — John 6:35 -->
 <div class="verse">
   <blockquote>"I am the bread of life. Whoever comes to me will never go hungry, and whoever believes in me will never be thirsty."</blockquote>
-  <cite>Jesus Christ · John 6:35</cite>
-  <p class="verse-context">The manna in the wilderness pointed forward to something greater. Jesus is the true bread from heaven — the sustenance every person in recovery ultimately needs.</p>
+  <cite>Jesus Christ · John 6:35 (NIV)</cite>
+  <p class="verse-mission-label">Our Mission</p>
+  <p class="verse-context">The manna in the wilderness pointed forward to something greater. Jesus is the true bread from heaven, given freely to us so that we can find life and hunger no more. zanmanna exists to help those who are hungry and thirst to find Jesus.</p>
 </div>
 
 <!-- FEATURES -->
 <div class="features-bg" id="app">
   <div class="features-header">
     <p class="section-kicker">Inside the App</p>
-    <h2 class="section-h2">Everything a recovery<br>community <span>needs.</span></h2>
+    <h2 class="section-h2">For community,<br>built with <span>love.</span></h2>
+    <p class="features-sub">Come see what's inside Manna.</p>
   </div>
   <div class="features-grid">
+    <!-- 1. Resources -->
+    <div class="feature">
+      <div class="feature-icon">
+        <svg width="20" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5EEE4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+        </svg>
+      </div>
+      <h3>Community Wall</h3>
+      <p>News, events, guides, programme materials and spiritual resources curated by your community leaders. Relevant, accessible and always at hand.</p>
+    </div>
+    <!-- 2. Daily Bread -->
     <div class="feature">
       <div class="feature-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5EEE4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -527,8 +812,23 @@
         </svg>
       </div>
       <h3>Daily Bread</h3>
-      <p>Daily devotionals with scripture, reflection, and prayer. A moment of stillness to start each day.</p>
+      <p>Daily devotionals with scripture, reflection and prayer. A moment of stillness and nourishment to start each day together.</p>
     </div>
+    <!-- 3. Private Journal -->
+    <div class="feature">
+      <div class="feature-icon">
+        <svg width="20" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5EEE4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+          <line x1="8" y1="7" x2="16" y2="7"/>
+          <line x1="8" y1="11" x2="16" y2="11"/>
+          <line x1="8" y1="15" x2="12" y2="15"/>
+          <line x1="4" y1="2" x2="4" y2="22"/>
+        </svg>
+      </div>
+      <h3>Private Journal</h3>
+      <p>A safe, private space for personal reflection and growth. Voice-to-text enabled. Visible only to the person who wrote it.</p>
+    </div>
+    <!-- 4. Prayer Wall -->
     <div class="feature">
       <div class="feature-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5EEE4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -536,18 +836,9 @@
         </svg>
       </div>
       <h3>Prayer Wall</h3>
-      <p>Community prayer with anonymity protection, "I'm Praying" counters, and answered prayer tracking.</p>
+      <p>A shared prayer wall where community members lift each other up. Anonymity protected, answered prayers celebrated.</p>
     </div>
-    <div class="feature">
-      <div class="feature-icon">
-        <svg width="20" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5EEE4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-        </svg>
-      </div>
-      <h3>Private Journal</h3>
-      <p>A safe, private space for reflection. Voice-to-text enabled. Visible only to the person who wrote it.</p>
-    </div>
+    <!-- 5. Full Bible -->
     <div class="feature">
       <div class="feature-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5EEE4" stroke-width="2" stroke-linecap="round">
@@ -556,17 +847,9 @@
         </svg>
       </div>
       <h3>Full Bible</h3>
-      <p>All 66 books, 1,189 chapters, and 31,105 verses — always available, always free.</p>
+      <p>The full Word of God in your pocket. All 66 books, 1,189 chapters and 31,103 verses. Always available, always free.</p>
     </div>
-    <div class="feature">
-      <div class="feature-icon">
-        <svg width="20" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5EEE4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
-        </svg>
-      </div>
-      <h3>Resources</h3>
-      <p>Recovery guides, workshop summaries, and spiritual growth materials curated by staff.</p>
-    </div>
+    <!-- 6. Emergency Help -->
     <div class="feature">
       <div class="feature-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5EEE4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -574,10 +857,47 @@
         </svg>
       </div>
       <h3>Emergency Help</h3>
-      <p>One-tap crisis support connecting guests to pastoral care — dignity preserved in the hardest moments.</p>
+      <p>One-tap support connecting community members to pastoral care. Dignity preserved in the hardest moments.</p>
     </div>
   </div>
   <div class="features-footer"></div>
+</div>
+
+<!-- APP SHOWCASE CAROUSEL -->
+<div class="app-showcase-section">
+  <div class="app-showcase-inner">
+
+    <!-- Left: Text -->
+    <div class="app-showcase-left">
+      <p class="app-showcase-kicker" id="carouselKicker">Community Wall</p>
+      <h2 class="app-showcase-title" id="carouselTitle">Your community,<br>in one <span>place.</span></h2>
+      <p class="app-showcase-desc" id="carouselDesc">News, events, guides and spiritual resources curated by your community leaders. Relevant, accessible and always at hand.</p>
+      <a href="#contact" class="btn-dark">Request a demo ↓</a>
+    </div>
+
+    <!-- Right: Phone -->
+    <div class="app-showcase-right">
+      <div class="app-phone-frame">
+        <div class="app-phone-notch">
+          <div class="app-phone-pill"></div>
+        </div>
+        <div class="app-phone-screen" id="carouselScreen">
+          <!-- Placeholder screens injected by JS -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Dots -->
+  <div class="carousel-dots" id="carouselDots">
+    <button class="carousel-dot active" onclick="goToSlide(0)"></button>
+    <button class="carousel-dot" onclick="goToSlide(1)"></button>
+    <button class="carousel-dot" onclick="goToSlide(2)"></button>
+    <button class="carousel-dot" onclick="goToSlide(3)"></button>
+    <button class="carousel-dot" onclick="goToSlide(4)"></button>
+    <button class="carousel-dot" onclick="goToSlide(5)"></button>
+  </div>
 </div>
 
 <!-- COMING SOON -->
@@ -617,7 +937,7 @@
   <div class="contact-wrap">
     <p class="section-kicker">Get in Touch</p>
     <h2 class="section-h2">Partner with <span>ZanManna.</span></h2>
-    <p class="contact-sub">Whether you lead a recovery centre, a church, a pastoral team, or simply share our heart — we'd love to hear from you.</p>
+    <p class="contact-sub">Whether you lead a recovery centre, a church, a pastoral team or simply share our heart, we'd love to hear from you.</p>
     <form action="https://formspree.io/f/xeerkzwd" method="POST">
       <div class="form-row-2">
         <div class="form-field">
@@ -661,5 +981,95 @@
   <p>© 2026 ZanManna · Redemptive Technology · Built with love</p>
 </footer>
 
+<script>
+  var slides = [
+    {
+      kicker: "Community Wall",
+      title: "Your community, in one <span>place.<\/span>",
+      desc: "News, events, guides and spiritual resources curated by your community leaders. Relevant, accessible and always at hand.",
+      screen: '<div class="placeholder-screen"><div class="placeholder-topbar"><div class="placeholder-topbar-title">Community Wall<\/div><\/div><div class="placeholder-card"><div class="placeholder-card-label">Next Event<\/div><div class="placeholder-card-title">Community Forum<\/div><div class="placeholder-card-body">A support group to share experiences and encourage one another.<\/div><\/div><div class="placeholder-avatar-row"><div class="placeholder-avatar"><\/div><div><div class="placeholder-line wide"><\/div><div class="placeholder-line short"><\/div><\/div><\/div><div class="placeholder-avatar-row"><div class="placeholder-avatar"><\/div><div><div class="placeholder-line medium"><\/div><div class="placeholder-line short"><\/div><\/div><\/div><\/div>'
+    },
+    {
+      kicker: "Daily Bread",
+      title: "Nourishment for every <span>day.<\/span>",
+      desc: "Daily devotionals with scripture, reflection and prayer. A moment of stillness and nourishment to start each day together.",
+      screen: '<div class="placeholder-screen"><div class="placeholder-topbar"><div class="placeholder-topbar-title">Daily Bread<\/div><\/div><div class="placeholder-verse"><div class="placeholder-verse-text">I am the bread of life. Whoever comes to me will never go hungry.<\/div><div class="placeholder-verse-ref">John 6:35<\/div><\/div><div class="placeholder-card"><div class="placeholder-card-label">Today's Devotion<\/div><div class="placeholder-card-title">Walking in the Light<\/div><div class="placeholder-card-body">Each step forward is a step of faith. You are not alone on this journey...<\/div><\/div><\/div>'
+    },
+    {
+      kicker: "Private Journal",
+      title: "A space that is only <span>yours.<\/span>",
+      desc: "A safe, private space for personal reflection and growth. Voice-to-text enabled. Visible only to the person who wrote it.",
+      screen: '<div class="placeholder-screen"><div class="placeholder-topbar"><div class="placeholder-topbar-title">My Journal<\/div><\/div><div class="placeholder-card"><div class="placeholder-card-label">Today<\/div><div class="placeholder-card-title">A good day<\/div><div class="placeholder-card-body">Feeling grateful today. The morning session really helped me reflect...<\/div><\/div><div class="placeholder-card"><div class="placeholder-card-label">Yesterday<\/div><div class="placeholder-card-title">Hard but hopeful<\/div><div class="placeholder-card-body">It was a tough day but I felt supported by the community...<\/div><\/div><\/div>'
+    },
+    {
+      kicker: "Prayer Wall",
+      title: "Lifting each other <span>up.<\/span>",
+      desc: "A shared prayer wall where community members lift each other up. Anonymity protected, answered prayers celebrated.",
+      screen: '<div class="placeholder-screen"><div class="placeholder-topbar"><div class="placeholder-topbar-title">Prayer Wall<\/div><\/div><div class="placeholder-card"><div class="placeholder-card-body">Please pray for strength as I face a difficult week ahead.<\/div><div style="margin-top:8px"><span class="placeholder-tag">12 praying<\/span><span class="placeholder-tag">Recovery<\/span><\/div><\/div><div class="placeholder-card"><div class="placeholder-card-body">Grateful for answered prayer - I got the job!<\/div><div style="margin-top:8px"><span class="placeholder-tag">Answered<\/span><span class="placeholder-tag">Gratitude<\/span><\/div><\/div><\/div>'
+    },
+    {
+      kicker: "Full Bible",
+      title: "The Word, always <span>available.<\/span>",
+      desc: "The full Word of God in your pocket. All 66 books, 1,189 chapters and 31,103 verses. Always available, always free.",
+      screen: '<div class="placeholder-screen"><div class="placeholder-topbar"><div class="placeholder-topbar-title">Bible<\/div><\/div><div class="placeholder-verse"><div class="placeholder-verse-text">Your word is a lamp for my feet, a light on my path.<\/div><div class="placeholder-verse-ref">Psalm 119:105<\/div><\/div><div class="placeholder-card"><div class="placeholder-card-label">Browse<\/div><div class="placeholder-line wide"><\/div><div class="placeholder-line medium"><\/div><div class="placeholder-line wide"><\/div><div class="placeholder-line short"><\/div><\/div><\/div>'
+    },
+    {
+      kicker: "Emergency Help",
+      title: "Support when it <span>matters most.<\/span>",
+      desc: "One-tap support connecting community members to pastoral care. Dignity preserved in the hardest moments.",
+      screen: '<div class="placeholder-screen"><div class="placeholder-topbar"><div class="placeholder-topbar-title">I Need Help<\/div><\/div><div class="placeholder-card" style="border-left:3px solid #8B7A69"><div class="placeholder-card-label">Pastoral Care<\/div><div class="placeholder-card-title">Reach out now<\/div><div class="placeholder-card-body">Your community leader is here for you. Tap to connect.<\/div><\/div><div class="placeholder-card"><div class="placeholder-card-label">Crisis Support<\/div><div class="placeholder-card-title">You are not alone<\/div><div class="placeholder-card-body">Immediate support resources available 24\/7.<\/div><\/div><\/div>'
+    }
+  ];
+
+  var current = 0;
+  var timer = null;
+
+  function goToSlide(index, fromUser) {
+    if (fromUser) {
+      clearInterval(timer);
+      startTimer();
+    }
+    current = index;
+
+    var kicker = document.getElementById('carouselKicker');
+    var title = document.getElementById('carouselTitle');
+    var desc = document.getElementById('carouselDesc');
+    var screen = document.getElementById('carouselScreen');
+
+    kicker.style.opacity = '0';
+    title.style.opacity = '0';
+    desc.style.opacity = '0';
+    screen.style.opacity = '0';
+
+    setTimeout(function() {
+      kicker.textContent = slides[index].kicker;
+      title.innerHTML = slides[index].title;
+      desc.textContent = slides[index].desc;
+      screen.innerHTML = slides[index].screen;
+      kicker.style.opacity = '1';
+      title.style.opacity = '1';
+      desc.style.opacity = '1';
+      screen.style.opacity = '1';
+    }, 300);
+
+    document.querySelectorAll('.carousel-dot').forEach(function(dot, i) {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  document.querySelectorAll('.carousel-dot').forEach(function(dot, i) {
+    dot.onclick = function() { goToSlide(i, true); };
+  });
+
+  function startTimer() {
+    timer = setInterval(function() {
+      goToSlide((current + 1) % slides.length, false);
+    }, 4000);
+  }
+
+  goToSlide(0, false);
+  document.getElementById('carouselScreen').innerHTML = slides[0].screen;
+  startTimer();
+</script>
 </body>
 </html>
