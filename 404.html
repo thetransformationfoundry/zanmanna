@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>
+    // Redirect clean paths back to the home page with the correct anchor
+    // e.g. zanmanna.com/app → zanmanna.com/#app
+    var path = window.location.pathname.replace(/^\//, '');
+    if (path) {
+      window.location.replace('/#' + path);
+    } else {
+      window.location.replace('/');
+    }
+  </script>
+</head>
+<body></body>
+</html>
