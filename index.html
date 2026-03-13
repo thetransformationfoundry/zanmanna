@@ -272,30 +272,13 @@
     .app-showcase-right {
       flex-shrink: 0;
     }
-    .app-phone-frame {
-      width: 260px;
-      background: #1a1a1a;
-      border: 1.5px solid rgba(255,255,255,0.1);
-      border-radius: 40px;
-      overflow: hidden;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-    }
-    .app-phone-notch {
-      display: flex; justify-content: center;
-      padding: 12px 0 6px; background: #1a1a1a;
-    }
-    .app-phone-pill {
-      width: 80px; height: 26px;
-      background: #000; border-radius: 20px;
-    }
-    .app-phone-screen {
-      background: #f0ece6;
-      min-height: 420px;
+    .app-screen-img {
+      width: 280px;
       transition: opacity 0.3s ease;
-      overflow: hidden;
     }
-    .app-phone-screen img {
+    .app-screen-img img {
       width: 100%; display: block;
+      filter: drop-shadow(0 32px 64px rgba(0,0,0,0.4));
     }
     /* Placeholder screen styles */
     .placeholder-screen {
@@ -877,13 +860,7 @@
 
     <!-- Right: Phone -->
     <div class="app-showcase-right">
-      <div class="app-phone-frame">
-        <div class="app-phone-notch">
-          <div class="app-phone-pill"></div>
-        </div>
-        <div class="app-phone-screen" id="carouselScreen">
-          <!-- Placeholder screens injected by JS -->
-        </div>
+      <div class="app-screen-img" id="carouselScreen">
       </div>
     </div>
 
@@ -891,12 +868,12 @@
 
   <!-- Dots -->
   <div class="carousel-dots" id="carouselDots">
-    <button class="carousel-dot active" onclick="goToSlide(0)"></button>
-    <button class="carousel-dot" onclick="goToSlide(1)"></button>
-    <button class="carousel-dot" onclick="goToSlide(2)"></button>
-    <button class="carousel-dot" onclick="goToSlide(3)"></button>
-    <button class="carousel-dot" onclick="goToSlide(4)"></button>
-    <button class="carousel-dot" onclick="goToSlide(5)"></button>
+    <button class="carousel-dot active" data-index="0"></button>
+    <button class="carousel-dot" data-index="1"></button>
+    <button class="carousel-dot" data-index="2"></button>
+    <button class="carousel-dot" data-index="3"></button>
+    <button class="carousel-dot" data-index="4"></button>
+    <button class="carousel-dot" data-index="5"></button>
   </div>
 </div>
 
@@ -981,74 +958,58 @@
   <p>© 2026 ZanManna · Redemptive Technology · Built with love</p>
 </footer>
 
+
+<!-- Hidden slide content -->
+<div style="display:none">
+  <div id="screen-0">
+    <img src="assets/images/screenshots/screen-community-wall.png" alt="Community Wall" style="width:100%; display:block;">
+  </div><div id="screen-1">
+    <img src="assets/images/screenshots/screen-daily-bread.png" alt="Daily Bread" style="width:100%; display:block;">
+  </div><div id="screen-2">
+    <img src="assets/images/screenshots/screen-private-journal.png" alt="Private Journal" style="width:100%; display:block;">
+  </div><div id="screen-3">
+    <img src="assets/images/screenshots/screen-prayer-wall.png" alt="Prayer Wall" style="width:100%; display:block;">
+  </div><div id="screen-4">
+    <img src="assets/images/screenshots/screen-bible.png" alt="Full Bible" style="width:100%; display:block;">
+  </div><div id="screen-5">
+    <img src="assets/images/screenshots/screen-emergency-help.png" alt="Emergency Help" style="width:100%; display:block;">
+  </div></div>
+</div>
+
 <script>
   var slides = [
-    {
-      kicker: "Community Wall",
-      title: "Your community, in one <span>place.<\/span>",
-      desc: "News, events, guides and spiritual resources curated by your community leaders. Relevant, accessible and always at hand.",
-      screen: '<div class="placeholder-screen"><div class="placeholder-topbar"><div class="placeholder-topbar-title">Community Wall<\/div><\/div><div class="placeholder-card"><div class="placeholder-card-label">Next Event<\/div><div class="placeholder-card-title">Community Forum<\/div><div class="placeholder-card-body">A support group to share experiences and encourage one another.<\/div><\/div><div class="placeholder-avatar-row"><div class="placeholder-avatar"><\/div><div><div class="placeholder-line wide"><\/div><div class="placeholder-line short"><\/div><\/div><\/div><div class="placeholder-avatar-row"><div class="placeholder-avatar"><\/div><div><div class="placeholder-line medium"><\/div><div class="placeholder-line short"><\/div><\/div><\/div><\/div>'
-    },
-    {
-      kicker: "Daily Bread",
-      title: "Nourishment for every <span>day.<\/span>",
-      desc: "Daily devotionals with scripture, reflection and prayer. A moment of stillness and nourishment to start each day together.",
-      screen: '<div class="placeholder-screen"><div class="placeholder-topbar"><div class="placeholder-topbar-title">Daily Bread<\/div><\/div><div class="placeholder-verse"><div class="placeholder-verse-text">I am the bread of life. Whoever comes to me will never go hungry.<\/div><div class="placeholder-verse-ref">John 6:35<\/div><\/div><div class="placeholder-card"><div class="placeholder-card-label">Today's Devotion<\/div><div class="placeholder-card-title">Walking in the Light<\/div><div class="placeholder-card-body">Each step forward is a step of faith. You are not alone on this journey...<\/div><\/div><\/div>'
-    },
-    {
-      kicker: "Private Journal",
-      title: "A space that is only <span>yours.<\/span>",
-      desc: "A safe, private space for personal reflection and growth. Voice-to-text enabled. Visible only to the person who wrote it.",
-      screen: '<div class="placeholder-screen"><div class="placeholder-topbar"><div class="placeholder-topbar-title">My Journal<\/div><\/div><div class="placeholder-card"><div class="placeholder-card-label">Today<\/div><div class="placeholder-card-title">A good day<\/div><div class="placeholder-card-body">Feeling grateful today. The morning session really helped me reflect...<\/div><\/div><div class="placeholder-card"><div class="placeholder-card-label">Yesterday<\/div><div class="placeholder-card-title">Hard but hopeful<\/div><div class="placeholder-card-body">It was a tough day but I felt supported by the community...<\/div><\/div><\/div>'
-    },
-    {
-      kicker: "Prayer Wall",
-      title: "Lifting each other <span>up.<\/span>",
-      desc: "A shared prayer wall where community members lift each other up. Anonymity protected, answered prayers celebrated.",
-      screen: '<div class="placeholder-screen"><div class="placeholder-topbar"><div class="placeholder-topbar-title">Prayer Wall<\/div><\/div><div class="placeholder-card"><div class="placeholder-card-body">Please pray for strength as I face a difficult week ahead.<\/div><div style="margin-top:8px"><span class="placeholder-tag">12 praying<\/span><span class="placeholder-tag">Recovery<\/span><\/div><\/div><div class="placeholder-card"><div class="placeholder-card-body">Grateful for answered prayer - I got the job!<\/div><div style="margin-top:8px"><span class="placeholder-tag">Answered<\/span><span class="placeholder-tag">Gratitude<\/span><\/div><\/div><\/div>'
-    },
-    {
-      kicker: "Full Bible",
-      title: "The Word, always <span>available.<\/span>",
-      desc: "The full Word of God in your pocket. All 66 books, 1,189 chapters and 31,103 verses. Always available, always free.",
-      screen: '<div class="placeholder-screen"><div class="placeholder-topbar"><div class="placeholder-topbar-title">Bible<\/div><\/div><div class="placeholder-verse"><div class="placeholder-verse-text">Your word is a lamp for my feet, a light on my path.<\/div><div class="placeholder-verse-ref">Psalm 119:105<\/div><\/div><div class="placeholder-card"><div class="placeholder-card-label">Browse<\/div><div class="placeholder-line wide"><\/div><div class="placeholder-line medium"><\/div><div class="placeholder-line wide"><\/div><div class="placeholder-line short"><\/div><\/div><\/div>'
-    },
-    {
-      kicker: "Emergency Help",
-      title: "Support when it <span>matters most.<\/span>",
-      desc: "One-tap support connecting community members to pastoral care. Dignity preserved in the hardest moments.",
-      screen: '<div class="placeholder-screen"><div class="placeholder-topbar"><div class="placeholder-topbar-title">I Need Help<\/div><\/div><div class="placeholder-card" style="border-left:3px solid #8B7A69"><div class="placeholder-card-label">Pastoral Care<\/div><div class="placeholder-card-title">Reach out now<\/div><div class="placeholder-card-body">Your community leader is here for you. Tap to connect.<\/div><\/div><div class="placeholder-card"><div class="placeholder-card-label">Crisis Support<\/div><div class="placeholder-card-title">You are not alone<\/div><div class="placeholder-card-body">Immediate support resources available 24\/7.<\/div><\/div><\/div>'
-    }
+    { kicker: "Community Wall", title: "Your community, in one <span>place.</span>", desc: "News, events, guides and spiritual resources curated by your community leaders. Relevant, accessible and always at hand." },
+    { kicker: "Daily Bread", title: "Nourishment for every <span>day.</span>", desc: "Daily devotionals with scripture, reflection and prayer. A moment of stillness and nourishment to start each day together." },
+    { kicker: "Private Journal", title: "A space that is only <span>yours.</span>", desc: "A safe, private space for personal reflection and growth. Voice-to-text enabled. Visible only to the person who wrote it." },
+    { kicker: "Prayer Wall", title: "Lifting each other <span>up.</span>", desc: "A shared prayer wall where community members lift each other up. Anonymity protected, answered prayers celebrated." },
+    { kicker: "Full Bible", title: "The Word, always <span>available.</span>", desc: "The full Word of God in your pocket. All 66 books, 1,189 chapters and 31,103 verses. Always available, always free." },
+    { kicker: "Emergency Help", title: "Support when it <span>matters most.</span>", desc: "One-tap support connecting community members to pastoral care. Dignity preserved in the hardest moments." }
   ];
 
   var current = 0;
   var timer = null;
 
-  function goToSlide(index, fromUser) {
-    if (fromUser) {
-      clearInterval(timer);
-      startTimer();
-    }
+  function goToSlide(index) {
     current = index;
 
     var kicker = document.getElementById('carouselKicker');
-    var title = document.getElementById('carouselTitle');
-    var desc = document.getElementById('carouselDesc');
+    var title  = document.getElementById('carouselTitle');
+    var desc   = document.getElementById('carouselDesc');
     var screen = document.getElementById('carouselScreen');
 
     kicker.style.opacity = '0';
-    title.style.opacity = '0';
-    desc.style.opacity = '0';
+    title.style.opacity  = '0';
+    desc.style.opacity   = '0';
     screen.style.opacity = '0';
 
     setTimeout(function() {
       kicker.textContent = slides[index].kicker;
-      title.innerHTML = slides[index].title;
-      desc.textContent = slides[index].desc;
-      screen.innerHTML = slides[index].screen;
+      title.innerHTML    = slides[index].title;
+      desc.textContent   = slides[index].desc;
+      screen.innerHTML   = document.getElementById('screen-' + index).innerHTML;
       kicker.style.opacity = '1';
-      title.style.opacity = '1';
-      desc.style.opacity = '1';
+      title.style.opacity  = '1';
+      desc.style.opacity   = '1';
       screen.style.opacity = '1';
     }, 300);
 
@@ -1057,18 +1018,21 @@
     });
   }
 
-  document.querySelectorAll('.carousel-dot').forEach(function(dot, i) {
-    dot.onclick = function() { goToSlide(i, true); };
+  document.querySelectorAll('.carousel-dot').forEach(function(dot) {
+    dot.addEventListener('click', function() {
+      clearInterval(timer);
+      goToSlide(parseInt(this.getAttribute('data-index')));
+      startTimer();
+    });
   });
 
   function startTimer() {
     timer = setInterval(function() {
-      goToSlide((current + 1) % slides.length, false);
+      goToSlide((current + 1) % slides.length);
     }, 4000);
   }
 
-  goToSlide(0, false);
-  document.getElementById('carouselScreen').innerHTML = slides[0].screen;
+  goToSlide(0);
   startTimer();
 </script>
 </body>
