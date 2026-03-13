@@ -536,13 +536,16 @@
       border-radius: 980px; font-size: 15px; font-weight: 500;
       color: var(--cream); text-decoration: none;
       transition: all 0.2s ease; letter-spacing: -0.01em;
+      white-space: nowrap; flex-shrink: 0;
     }
     .btn-support:hover { background: rgba(245,238,228,0.08); border-color: rgba(245,238,228,0.6); }
     .coming-support-block {
-      display: flex; flex-direction: column; gap: 16px;
+      display: flex; flex-direction: row; align-items: center;
+      justify-content: space-between; gap: 24px;
       padding: 24px; background: rgba(245,238,228,0.04);
       border: 1px solid rgba(245,238,228,0.08);
       border-radius: 12px; margin-top: 0;
+      grid-column: 1 / -1;
     }
     .coming-support-note {
       font-size: 13px; line-height: 1.7;
@@ -964,15 +967,7 @@
   </div>
   <div class="coming-details">
     <div class="coming-photo">
-      <div class="coming-photo-placeholder">
-        <div class="coming-photo-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(245,238,228,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-            <path d="M21 15l-5-5L5 21"/>
-          </svg>
-        </div>
-        <p class="coming-photo-label">Photo coming soon</p>
-      </div>
+      <img src="assets/images/manna-in-use.jpg" alt="Community gathered together" />
     </div>
     <div class="coming-row">
       <span class="coming-row-label">Platform</span>
