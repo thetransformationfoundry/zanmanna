@@ -1084,21 +1084,20 @@
     var desc   = document.getElementById('carouselDesc');
     var screen = document.getElementById('carouselScreen');
 
-    kicker.style.opacity = '0';
-    title.style.opacity  = '0';
-    desc.style.opacity   = '0';
-    screen.style.opacity = '0';
+    // Add transition to all elements
+    var els = [kicker, title, desc, screen];
+    els.forEach(function(el) {
+      el.style.transition = 'opacity 0.35s ease';
+      el.style.opacity = '0';
+    });
 
     setTimeout(function() {
       kicker.textContent = slides[index].kicker;
       title.innerHTML    = slides[index].title;
       desc.textContent   = slides[index].desc;
       screen.innerHTML   = document.getElementById('screen-' + index).innerHTML;
-      kicker.style.opacity = '1';
-      title.style.opacity  = '1';
-      desc.style.opacity   = '1';
-      screen.style.opacity = '1';
-    }, 300);
+      els.forEach(function(el) { el.style.opacity = '1'; });
+    }, 380);
 
     document.querySelectorAll('.carousel-dot').forEach(function(dot, i) {
       dot.classList.toggle('active', i === index);
