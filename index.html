@@ -715,7 +715,8 @@
         width: 100%; height: auto; object-fit: unset;
       }
       .carousel-dots {
-        margin-top: 28px;
+        position: absolute; bottom: 24px; left: 24px;
+        margin-top: 0; justify-content: flex-start;
       }
     }
   </style>
@@ -973,11 +974,11 @@
 <!-- APP SHOWCASE CAROUSEL -->
 <div class="app-showcase-section">
   <div class="app-showcase-inner">
-    <div class="app-showcase-left">
+    <div class="app-showcase-left" id="carouselLeft">
       <p class="app-showcase-kicker" id="carouselKicker">Community Wall</p>
       <h2 class="app-showcase-title" id="carouselTitle">Your community,<br>in one <span>place.</span></h2>
       <p class="app-showcase-desc" id="carouselDesc">Spiritual resources, helpful guides, programme materials and community updates curated by your leaders and delivered based on your role. Everyone sees what is most relevant to them. The most helpful resources, available at the right time.</p>
-      <a href="#contact" class="btn-support">Request a demo ↓</a>
+      <a href="#contact" class="btn-support" id="carouselCta">Request a demo ↓</a>
     </div>
   </div>
 
@@ -1127,23 +1128,20 @@
   function goToSlide(index) {
     current = index;
 
-    var kicker = document.getElementById('carouselKicker');
-    var title  = document.getElementById('carouselTitle');
-    var desc   = document.getElementById('carouselDesc');
+    var left   = document.getElementById('carouselLeft');
     var screen = document.getElementById('carouselScreen');
 
-    // Add transition to all elements
-    var els = [kicker, title, desc, screen];
+    var els = [left, screen];
     els.forEach(function(el) {
       el.style.transition = 'opacity 0.5s ease';
       el.style.opacity = '0';
     });
 
     setTimeout(function() {
-      kicker.textContent = slides[index].kicker;
-      title.innerHTML    = slides[index].title;
-      desc.textContent   = slides[index].desc;
-      screen.innerHTML   = document.getElementById('screen-' + index).innerHTML;
+      document.getElementById('carouselKicker').textContent = slides[index].kicker;
+      document.getElementById('carouselTitle').innerHTML    = slides[index].title;
+      document.getElementById('carouselDesc').textContent   = slides[index].desc;
+      screen.innerHTML = document.getElementById('screen-' + index).innerHTML;
       els.forEach(function(el) { el.style.opacity = '1'; });
     }, 520);
 
