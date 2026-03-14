@@ -171,13 +171,14 @@ zanmanna-website/
 - Order: Community Wall / Daily Bread / Private Journal / Prayer Wall / Full Bible / Emergency Help
 
 ### 9. App Showcase Carousel (dark card)
-- Left: kicker + title + description (updates per slide)
-- Right: screenshot image
-- "Request a demo ↓" — outlined cream pill (btn-support style)
+- Left (`#carouselLeft`): kicker + title + description + "Request a demo ↓" CTA — all fade together as one unit
+- Right: screenshot image (`#carouselScreen`) — fades in sync with left panel
+- Screenshot images: edge-to-edge PNGs with no built-in padding, transparent background
+- Desktop: image absolutely positioned, bleeds to top and right edges of card (`padding: 32px 32px 0 0` for breathing room), anchored to bottom
 - 6 slides, auto-cycles every 7 seconds
-- Fade transition: 0.5s ease, swap at 520ms
+- Fade transition: 0.5s ease on both left panel and image together, content swaps at 520ms
 - 6 dot indicators, manual click resets timer
-- Mobile: stacks vertically
+- Mobile: stacks vertically — text top, dots below text (position absolute bottom-left over image), image flush to bottom with 24px left/right padding
 
 ### 10. Coming Soon (dark card)
 - Kicker: "Launching 2026"
@@ -296,4 +297,4 @@ zanmanna-website/
 
 ---
 
-*Last updated: Session — mobile fixes, thank-you page, GDPR consent, clean URL routing, manna_logo.svg, support block styling, kicker consistency*
+*Last updated: Session — carousel unified fade transition, app showcase image bleed desktop/mobile, dots floating bottom-left mobile, mobile image sizing and centring*
