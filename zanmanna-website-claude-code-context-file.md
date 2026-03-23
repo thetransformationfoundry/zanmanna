@@ -123,7 +123,7 @@ zanmanna-website/
 ### 1. Nav
 - Fixed, frosted glass (`backdrop-filter: blur(20px)`)
 - `zanmanna_logo_dark.svg` on left, wrapped in `<a>` — clicking scrolls to top and cleans URL via JS
-- Links: About, Manna App
+- Links: About, Manna App, Sign in (links to `pages/sign-in.html`)
 - "Partner with us" pill CTA — dark background, cream text
 - Hover: background lightens to `#444340`, text stays cream (not opacity-based)
 - Mobile: nav links hidden, only logo + CTA shown
@@ -274,6 +274,19 @@ zanmanna-website/
 
 ---
 
+## pages/sign-in.html (Complete)
+
+- Branch: `app-sign-in-up-page`
+- Cream background, two dark cards side by side (stacks on mobile)
+- **Sign in card:** key SVG icon, prompts users with join code + private email to sign in at `https://manna.zanmanna.com/` — cream pill CTA
+- **Register card:** home SVG icon, directs orgs to register at `https://zanmanna.com/contact` — outlined cream pill CTA
+- Nav: `zanmanna_logo_dark.svg` + "Home" pill linking to `../index.html`
+- Footer note: "Not sure which applies to you? Contact us" — no full footer (minimal by design)
+- SVG icons use `stroke="rgb(245, 238, 228)"`, `stroke-width="1.75"` — matches `feature-icon` style in index.html
+- fadeUp animations, fully responsive
+
+---
+
 ## Pages Still To Build
 
 | Page | Priority | Notes |
@@ -296,4 +309,4 @@ zanmanna-website/
 
 ---
 
-*Last updated: Session — mobile fixes, thank-you page, GDPR consent, clean URL routing, manna_logo.svg, support block styling, kicker consistency*
+*Last updated: Session — sign-in page built (pages/sign-in.html), "Sign in" link added to index.html nav, branch: app-sign-in-up-page*
