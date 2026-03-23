@@ -88,6 +88,7 @@ zanmanna-website/
 ├── CLAUDE.md                   ← This file
 ├── pages/
 │   ├── thank-you.html          ← Form submission redirect (complete)
+│   ├── sign-in.html            ← Sign in / register org page (complete)
 │   ├── manna.html              ← Manna app deep dive (to build)
 │   ├── about.html              ← About zanmanna (to build)
 │   └── partners.html           ← Partner centres (to build)
@@ -306,6 +307,9 @@ zanmanna-website/
 - Core design language — Apple-inspired, generous whitespace
 - Formspree endpoint: `xeerkzwd`
 - Screenshot image paths — they work on live site, broken only in local preview
+
+## Claude Code Rules
+- Always update the Website Structure section when a new page is created or removed
 
 ---
 
