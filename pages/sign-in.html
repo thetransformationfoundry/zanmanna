@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In — Manna by ZanManna</title>
+  <link rel="icon" href="../assets/icons/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:       #F5EEE4;
+      --cream-light: #FAF6F0;
+      --taupe:       #8B7A69;
+      --taupe-light: #C4B5A5;
+      --taupe-dark:  #6B5D4F;
+      --dark:        #2C2B29;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream-light);
+      color: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px 60px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(250,246,240,0.88);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(139,122,105,0.12);
+    }
+
+    nav img.logo { height: 20px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a {
+      font-size: 13px; font-weight: 500; color: var(--cream-light);
+      background: var(--dark); padding: 8px 20px; border-radius: 980px;
+      text-decoration: none; letter-spacing: -0.01em; transition: background 0.2s ease;
+    }
+    .nav-links a:hover { background: #444340; color: var(--cream); }
+
+    /* PAGE */
+    .page-header {
+      text-align: center;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    .page-header .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 14px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+      color: var(--dark);
+    }
+
+    .page-header h1 span { color: var(--taupe); }
+
+    /* CARDS GRID */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 100%;
+      max-width: 860px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.25s;
+    }
+
+    .card {
+      background: var(--dark);
+      border-radius: 24px;
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      background: rgba(245,238,228,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--taupe-light);
+    }
+
+    .card h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      color: var(--cream);
+    }
+
+    .card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(245,238,228,0.55);
+      flex: 1;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(245,238,228,0.08);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 980px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--cream);
+      color: var(--dark);
+    }
+
+    .btn-primary:hover {
+      background: #fff;
+    }
+
+    .btn-outline {
+      border: 1.5px solid rgba(245,238,228,0.25);
+      color: var(--cream);
+    }
+
+    .btn-outline:hover {
+      background: rgba(245,238,228,0.07);
+      border-color: rgba(245,238,228,0.5);
+    }
+
+    /* FOOTER NOTE */
+    .footer-note {
+      margin-top: 36px;
+      font-size: 13px;
+      color: var(--taupe);
+      text-align: center;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.4s;
+    }
+
+    .footer-note a {
+      color: var(--taupe-dark);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .footer-note a:hover { color: var(--dark); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 40px 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html">
+      <img class="logo" src="../assets/images/zanmanna_logo_dark.svg" alt="zanmanna" />
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <p class="eyebrow">Manna App</p>
+    <h1>Welcome back to <span>Manna</span></h1>
+  </div>
+
+  <div class="cards">
+
+    <!-- SIGN IN CARD -->
+    <div class="card">
+      <div class="card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(245, 238, 228)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="7.5" cy="15.5" r="5.5"/>
+          <path d="M21 2l-9.6 9.6"/>
+          <path d="M15.5 7.5l3 3L22 7l-3-3"/>
+        </svg>
+      </div>
+      <p class="card-label">Already a member</p>
+      <h2>Sign in to your organization</h2>
+      <p>
+        If your church, rehab center, or fellowship community is already on Manna,
+        use your private email and join code to access your community.
+      </p>
+      <div class="divider"></div>
+      <a href="https://manna.zanmanna.com/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+        Sign in with join code →
+      </a>
+    </div>
+
+    <!-- SIGN UP CARD -->
+    <div class="card">
+      <div class="card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(245, 238, 228)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <p class="card-label">New to Manna</p>
+      <h2>Register your organization</h2>
+      <p>
+        Want to bring Manna to your church, rehabilitation center, or fellowship community?
+        Get in touch and we'll get you set up.
+      </p>
+      <div class="divider"></div>
+      <a href="https://zanmanna.com/contact" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+        Register your organization →
+      </a>
+    </div>
+
+  </div>
+
+  <p class="footer-note">
+    Not sure which applies to you? <a href="https://zanmanna.com/contact" target="_blank" rel="noopener noreferrer">Contact us</a> and we'll help.
+  </p>
+
+</body>
+</html>
