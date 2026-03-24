@@ -642,10 +642,55 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* MOBILE NAV MENU */
+    .nav-hamburger {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      padding: 4px; color: var(--dark);
+    }
+    .nav-hamburger svg { display: block; }
+
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 999;
+      background: var(--dark);
+      flex-direction: column;
+      padding: 20px 28px;
+    }
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu-header {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px; flex-shrink: 0; margin-bottom: 48px;
+    }
+    .mobile-menu-header img { height: 20px; filter: brightness(0) invert(1); opacity: 0.9; }
+    .mobile-menu-close {
+      background: none; border: none; cursor: pointer;
+      color: var(--cream); padding: 4px;
+    }
+    .mobile-menu-close svg { display: block; }
+
+    nav.menu-open {
+      background: var(--dark) !important;
+      border-bottom-color: transparent !important;
+      backdrop-filter: none !important;
+    }
+
+    .mobile-menu-links {
+      display: flex; flex-direction: column; gap: 4px; align-items: flex-start;
+    }
+    .mobile-menu-links a {
+      font-size: 40px; font-weight: 700; color: var(--cream);
+      text-decoration: none; letter-spacing: -0.02em; line-height: 1.2;
+      transition: opacity 0.15s;
+    }
+    .mobile-menu-links a:hover { opacity: 0.7; }
+
     /* RESPONSIVE */
     @media (max-width: 860px) {
       nav { padding: 0 24px; }
-      .nav-links a:not(.cta) { display: none; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
       .hero { padding: 120px 24px 80px; }
       .showcase { margin: 0 20px; padding: 56px 32px; flex-direction: column; text-align: center; border-radius: 16px; }
       .showcase-left p { margin: 0 auto 36px; }
@@ -724,7 +769,7 @@
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="main-nav">
   <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});history.replaceState(null,'',window.location.pathname);return false;"><img class="logo" src="assets/images/zanmanna_logo_dark.svg" alt="ZanManna" /></a>
   <div class="nav-links">
     <a href="#about">About</a>
@@ -732,7 +777,42 @@
     <a href="pages/sign-in.html">Sign in</a>
     <a href="#contact" class="cta">Partner with us</a>
   </div>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="openMenu();">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-header">
+    <img src="assets/images/zanmanna_logo_dark.svg" alt="ZanManna" />
+    <button class="mobile-menu-close" aria-label="Close menu" onclick="closeMenu();">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/>
+      </svg>
+    </button>
+  </div>
+  <nav class="mobile-menu-links">
+    <a href="#about" onclick="closeMenu();">About</a>
+    <a href="#app" onclick="closeMenu();">Manna App</a>
+    <a href="pages/sign-in.html">Sign In</a>
+    <a href="#contact" onclick="closeMenu();">Partner with us</a>
+  </nav>
+</div>
+<script>
+  function openMenu() {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.getElementById('main-nav').classList.add('menu-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('main-nav').classList.remove('menu-open');
+    document.body.style.overflow = '';
+  }
+</script>
 
 <!-- HERO -->
 <section class="hero">
