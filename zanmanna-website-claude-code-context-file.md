@@ -127,7 +127,8 @@ zanmanna-website/
 - Links: About, Manna App, Sign in (links to `pages/sign-in.html`)
 - "Partner with us" pill CTA — dark background, cream text
 - Hover: background lightens to `#444340`, text stays cream (not opacity-based)
-- Mobile: nav links hidden, only logo + CTA shown
+- **Mobile (≤860px):** hamburger button shown (top right), nav links hidden
+- **Mobile menu open:** the nav itself expands to `100dvh` fullscreen — dark background (`--dark`), `backdrop-filter` removed, logo inverts to cream, hamburger icon swaps to X (top right), links stack vertically at 40px/700 weight in cream. Clicking any link or the X closes the menu and nav returns to normal frosted glass state. No separate overlay div — avoids all z-index/backdrop-filter compositor conflicts.
 
 ### 2. Hero
 - Eyebrow: "Redemptive Technology"
@@ -230,7 +231,13 @@ zanmanna-website/
 - On success: redirects to `/pages/thank-you.html`
 - No paid Formspree plan required — redirect handled client-side
 
-### 3. Clean URL Routing
+### 3. Mobile Nav Toggle
+- `openMenu()` — adds `open` class to `#main-nav`, locks scroll
+- `closeMenu()` — removes `open` class, restores scroll
+- `toggleMenu()` — called by hamburger button, toggles between open/close
+- Nav links call `closeMenu()` on click so menu closes before scrolling to section
+
+### 4. Clean URL Routing
 - Intercepts all `<a href="#...">` clicks on the page
 - Scrolls to the target section smoothly
 - Replaces the URL hash with a clean path (e.g. `/#contact` becomes `/contact`)
@@ -313,4 +320,4 @@ zanmanna-website/
 
 ---
 
-*Last updated: Session — sign-in page built (pages/sign-in.html), "Sign in" link added to index.html nav, branch: app-sign-in-up-page*
+*Last updated: Session — mobile nav menu implemented (branch: mobile-nav-improvments). Nav expands fullscreen on mobile open; no separate overlay div used to avoid Safari backdrop-filter compositor conflicts.*
