@@ -670,12 +670,6 @@
     }
     .mobile-menu-close svg { display: block; }
 
-    nav.menu-open {
-      background: var(--dark) !important;
-      border-bottom-color: transparent !important;
-      backdrop-filter: none !important;
-    }
-
     .mobile-menu-links {
       display: flex; flex-direction: column; gap: 4px; align-items: flex-start;
     }
@@ -804,12 +798,18 @@
 <script>
   function openMenu() {
     document.getElementById('mobile-menu').classList.add('open');
-    document.getElementById('main-nav').classList.add('menu-open');
+    var nav = document.getElementById('main-nav');
+    nav.style.background = '#2c2b29';
+    nav.style.backdropFilter = 'none';
+    nav.style.borderBottomColor = 'transparent';
     document.body.style.overflow = 'hidden';
   }
   function closeMenu() {
     document.getElementById('mobile-menu').classList.remove('open');
-    document.getElementById('main-nav').classList.remove('menu-open');
+    var nav = document.getElementById('main-nav');
+    nav.style.background = '';
+    nav.style.backdropFilter = '';
+    nav.style.borderBottomColor = '';
     document.body.style.overflow = '';
   }
 </script>
