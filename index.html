@@ -652,7 +652,7 @@
 
     .mobile-menu {
       display: none;
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 999;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 10000;
       background: var(--dark);
       flex-direction: column;
       padding: 20px 28px;
@@ -798,18 +798,12 @@
 <script>
   function openMenu() {
     document.getElementById('mobile-menu').classList.add('open');
-    var nav = document.getElementById('main-nav');
-    nav.style.background = '#2c2b29';
-    nav.style.backdropFilter = 'none';
-    nav.style.borderBottomColor = 'transparent';
+    document.getElementById('main-nav').style.visibility = 'hidden';
     document.body.style.overflow = 'hidden';
   }
   function closeMenu() {
     document.getElementById('mobile-menu').classList.remove('open');
-    var nav = document.getElementById('main-nav');
-    nav.style.background = '';
-    nav.style.backdropFilter = '';
-    nav.style.borderBottomColor = '';
+    document.getElementById('main-nav').style.visibility = '';
     document.body.style.overflow = '';
   }
 </script>
