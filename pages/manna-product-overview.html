@@ -540,7 +540,16 @@
       .pricing-mission { grid-template-columns: 1fr; gap: 28px; padding: 40px 32px; margin-bottom: 40px; }
       .pricing-tiers { grid-template-columns: 1fr; gap: 16px; }
       .cta-band { margin: 0 20px 60px; padding: 64px 32px; }
-      footer { padding: 32px 24px; }
+      footer {
+        padding: 32px 24px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        row-gap: 16px;
+      }
+      footer .footer-logo { grid-column: 1; grid-row: 1; }
+      .back-to-top { grid-column: 2; grid-row: 1; }
+      footer .footer-copy { grid-column: 1 / -1; grid-row: 2; }
     }
 
     @media (max-width: 580px) {
