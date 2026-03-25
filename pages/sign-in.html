@@ -86,10 +86,10 @@
     /* CARDS GRID */
     .cards {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       width: 100%;
-      max-width: 860px;
+      max-width: 1100px;
       opacity: 0;
       animation: fadeUp 0.7s ease forwards 0.25s;
     }
@@ -199,16 +199,14 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    @media (max-width: 860px) {
+      .cards { grid-template-columns: 1fr 1fr; }
+    }
+
     @media (max-width: 640px) {
       nav { padding: 0 20px; }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .card {
-        padding: 40px 32px;
-      }
+      .cards { grid-template-columns: 1fr; }
+      .card { padding: 40px 32px; }
     }
   </style>
 </head>
@@ -230,7 +228,27 @@
 
   <div class="cards">
 
-    <!-- SIGN IN CARD -->
+    <!-- RETURNING / ALREADY ADDED CARD -->
+    <div class="card">
+      <div class="card-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(245, 238, 228)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+          <polyline points="10 17 15 12 10 7"/>
+          <line x1="15" y1="12" x2="3" y2="12"/>
+        </svg>
+      </div>
+      <p class="card-label">Returning member</p>
+      <h2>Welcome back to Manna</h2>
+      <p>
+        Been here before or your admin has already added you? Sign in with your email and we'll send you a verification code to get back in.
+      </p>
+      <div class="divider"></div>
+      <a href="https://manna.zanmanna.com/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+        Sign in with email →
+      </a>
+    </div>
+
+    <!-- NEW MEMBER WITH JOIN CODE CARD -->
     <div class="card">
       <div class="card-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(245, 238, 228)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -239,19 +257,18 @@
           <path d="M15.5 7.5l3 3L22 7l-3-3"/>
         </svg>
       </div>
-      <p class="card-label">Already a member</p>
-      <h2>Sign in to your organization</h2>
+      <p class="card-label">New member</p>
+      <h2>Activate your account</h2>
       <p>
-        If your church, rehab center, or fellowship community is already on Manna,
-        use your private email and join code to access your community.
+        Your organisation has given you a <strong>join code</strong> (lower case). Sign in with your email and verification code, then enter your <strong>join code</strong> (lower case), and you'll be connected to your community.
       </p>
       <div class="divider"></div>
       <a href="https://manna.zanmanna.com/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-        Sign in with join code →
+        Sign in and activate →
       </a>
     </div>
 
-    <!-- SIGN UP CARD -->
+    <!-- REGISTER ORG CARD -->
     <div class="card">
       <div class="card-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(245, 238, 228)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -260,14 +277,13 @@
         </svg>
       </div>
       <p class="card-label">New to Manna</p>
-      <h2>Register your organization</h2>
+      <h2>Register your organisation</h2>
       <p>
-        Want to bring Manna to your church, rehabilitation center, or fellowship community?
-        Get in touch and we'll get you set up.
+        Want to bring Manna to your church, rehabilitation centre, or fellowship community? Get in touch and we'll get you set up.
       </p>
       <div class="divider"></div>
-      <a href="https://zanmanna.com/contact" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
-        Register your organization →
+      <a href="../index.html#contact" class="btn btn-outline">
+        Register your organisation →
       </a>
     </div>
 

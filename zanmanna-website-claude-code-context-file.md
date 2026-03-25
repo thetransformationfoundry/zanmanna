@@ -285,13 +285,14 @@ zanmanna-website/
 
 ## pages/sign-in.html (Complete)
 
-- Branch: `app-sign-in-up-page`
-- Cream background, two dark cards side by side (stacks on mobile)
-- **Sign in card:** key SVG icon, prompts users with join code + private email to sign in at `https://manna.zanmanna.com/` — cream pill CTA
-- **Register card:** home SVG icon, directs orgs to register at `https://zanmanna.com/contact` — outlined cream pill CTA
+- Branch: `app-sign-in-up-page` (updated in `manna-app-product-overview-page`)
+- Cream background, three dark cards in a row (2-col at 860px, stacks to 1-col on mobile)
+- **Card 1 — Returning member:** sign-in icon, for users already in the system or returning after logout. CTA: "Sign in with email →" → `https://manna.zanmanna.com/`
+- **Card 2 — New member with join code:** key icon, for users with a join code from their org. Copy explains to sign in with email + verification code then enter join code (lower case, bolded). CTA: "Sign in and activate →" → `https://manna.zanmanna.com/`
+- **Card 3 — Register organisation:** home icon, directs new orgs to contact zanmanna. CTA: "Register your organisation →" → `../index.html#contact`
 - Nav: `zanmanna_logo_dark.svg` + "Home" pill linking to `../index.html`
-- Footer note: "Not sure which applies to you? Contact us" — no full footer (minimal by design)
-- SVG icons use `stroke="rgb(245, 238, 228)"`, `stroke-width="1.75"` — matches `feature-icon` style in index.html
+- Footer note: "Not sure which applies to you? Contact us"
+- SVG icons use `stroke="rgb(245, 238, 228)"`, `stroke-width="1.75"`
 - fadeUp animations, fully responsive
 
 ---
@@ -339,4 +340,4 @@ zanmanna-website/
 
 ---
 
-*Last updated: Session — manna-product-overview.html created (branch: manna-app-product-overview-page). Page includes expanded feature detail cards, role access matrix table, and pricing tiers. "Product Overview →" CTA added to index.html features footer. Nav on standalone pages uses same fullscreen mobile hamburger pattern as index.html.*
+*Last updated: Session — manna-product-overview.html created and sign-in.html updated to three cards (branch: manna-app-product-overview-page). Product overview page includes expanded feature detail cards, role access matrix table with rotate-to-landscape mobile prompt, and pricing tiers. "Product Overview →" CTA added to index.html features footer and app showcase carousel. sign-in.html restructured from 2 to 3 cards covering returning members, new members with join code, and new org registration.*
