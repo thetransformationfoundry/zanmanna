@@ -87,11 +87,12 @@ zanmanna-website/
 ├── CNAME                       ← zanmanna.com
 ├── CLAUDE.md                   ← This file
 ├── pages/
-│   ├── thank-you.html          ← Form submission redirect (complete)
-│   ├── sign-in.html            ← Sign in / register org page (complete)
-│   ├── manna.html              ← Manna app deep dive (to build)
-│   ├── about.html              ← About zanmanna (to build)
-│   └── partners.html           ← Partner centres (to build)
+│   ├── thank-you.html                  ← Form submission redirect (complete)
+│   ├── sign-in.html                    ← Sign in / register org page (complete)
+│   ├── manna-product-overview.html     ← Product overview: features, roles matrix, pricing (complete)
+│   ├── manna.html                      ← Manna app deep dive (to build)
+│   ├── about.html                      ← About zanmanna (to build)
+│   └── partners.html                   ← Partner centres (to build)
 ├── assets/
 │   ├── images/
 │   │   ├── zanmanna_logo.svg
@@ -306,6 +307,24 @@ zanmanna-website/
 
 ---
 
+## pages/manna-product-overview.html (Complete)
+
+- Branch: `manna-app-product-overview-page`
+- Full-page product overview for org leaders and technical reviewers
+- **Nav:** Full nav with hamburger mobile menu (same pattern as index.html). Links back to `../index.html` sections.
+- **Hero:** Dark section — kicker "Manna App", headline, CTAs to partner + pricing anchor
+- **Mission Band:** Cream band with free-for-all mission statement quote
+- **Features Section (6 cards):** Expanded detail cards for Community Wall, Daily Bread, Private Journal, Prayer Wall, Full Bible, Emergency Help — each with a technical detail block below the summary
+- **Architecture Band:** Dark card explaining multi-tenant model, global vs org content streams, join code onboarding, platform details
+- **Roles Section:** Six role cards (Global Admin, Org Admin, Org Partner, Org Guest, Org Past Guest, Revoked) each with colour-coded badge + description
+- **Access Matrix Table:** Full permission table — 20 features x 5 roles. Grouped by section (Devotionals, Bible, Prayer Wall, Community Wall, Private Journal, Emergency, User Management). Horizontally scrollable on mobile.
+- **Pricing Section:** Mission statement card (dark, 2-col) explaining free-if-needed ethos + why we charge. Three tier cards: 1-50 users €499/yr, 51-100 users €999/yr (featured/dark), 101-300 users €1,999/yr. Footnote for custom/large orgs.
+- **CTA Band:** Dark card — "Bring Manna to your community" — links to contact form and sign-in
+- **Footer:** Same as index.html — logo, copyright, back-to-top
+- **Entry point:** "Product Overview →" button added to `features-footer` div in index.html's `#app` section
+
+---
+
 ## What NOT to Change
 - Brand colours — fixed
 - Font — Inter only
@@ -320,4 +339,4 @@ zanmanna-website/
 
 ---
 
-*Last updated: Session — mobile nav menu implemented (branch: mobile-nav-improvments). Nav expands fullscreen on mobile open; no separate overlay div used to avoid Safari backdrop-filter compositor conflicts.*
+*Last updated: Session — manna-product-overview.html created (branch: manna-app-product-overview-page). Page includes expanded feature detail cards, role access matrix table, and pricing tiers. "Product Overview →" CTA added to index.html features footer. Nav on standalone pages uses same fullscreen mobile hamburger pattern as index.html.*
