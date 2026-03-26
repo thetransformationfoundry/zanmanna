@@ -90,6 +90,7 @@ zanmanna-website/
 │   ├── thank-you.html                  ← Form submission redirect (complete)
 │   ├── sign-in.html                    ← Sign in / register org page (complete)
 │   ├── manna-product-overview.html     ← Product overview: features, roles matrix, pricing (complete)
+│   ├── his-story.html                  ← Founder's story — Sean Abbood long-form editorial (complete)
 │   ├── manna.html                      ← Manna app deep dive (to build)
 │   ├── about.html                      ← About zanmanna (to build)
 │   └── partners.html                   ← Partner centres (to build)
@@ -301,6 +302,7 @@ zanmanna-website/
 
 | Page | Priority | Notes |
 |------|----------|-------|
+| `pages/his-story.html` | Complete | Founder's story — Sean Abbood long-form editorial page |
 | `pages/manna.html` | High | Deep dive — lead with mission first |
 | `pages/about.html` | Medium | zanmanna story and theology |
 | `pages/partners.html` | Medium | For rehab centres and organisations |
@@ -340,4 +342,4 @@ zanmanna-website/
 
 ---
 
-*Last updated: Session — pricing model updated to fully free (no tiers). Pricing section redesigned to two cards: "Free." announcement card and "Support the mission" donation card. Mission band updated to founder quote with scripture reference DEU 8:3 NIV, Sean Abbood attribution, and "Read his story" CTA. Manna pricing model: free for all organisations, funded by voluntary donations.*
+*Last updated: Session — his-story.html built as long-form founder editorial page. Hero has 2-col grid (text left, circular photo right) on desktop, stacked centred on mobile. Story uses pull quotes, scripture blocks, and side notes. "Read his story" CTA on manna-product-overview.html links to his-story.html. sean_abbood_founder.png added to assets/images.*
