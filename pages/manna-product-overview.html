@@ -181,16 +181,32 @@
     /* MISSION BAND */
     .mission-band {
       background: var(--cream);
-      padding: 72px 40px;
+      padding: 80px 40px;
       text-align: center;
       border-bottom: 1px solid rgba(139,122,105,0.15);
     }
-    .mission-band p {
-      font-size: clamp(18px, 2.2vw, 26px); font-weight: 400;
-      letter-spacing: -0.025em; line-height: 1.55; color: var(--dark);
+    .mission-band blockquote {
       max-width: 740px; margin: 0 auto;
+      position: relative;
     }
-    .mission-band p strong { font-weight: 600; }
+    .mission-band blockquote::before {
+      content: "\201C";
+      font-size: 120px; font-weight: 700; line-height: 0.6;
+      color: var(--taupe-light); display: block;
+      margin-bottom: 24px; letter-spacing: -0.04em;
+    }
+    .mission-band blockquote p {
+      font-size: clamp(18px, 2.2vw, 24px); font-weight: 400;
+      letter-spacing: -0.025em; line-height: 1.6; color: var(--dark);
+      font-style: italic;
+    }
+    .mission-band blockquote p strong { font-weight: 600; font-style: normal; }
+    .mission-band .quote-attribution {
+      margin-top: 28px;
+      font-size: 13px; font-weight: 600; color: var(--taupe);
+      letter-spacing: 0.01em;
+    }
+    .mission-band .quote-cta { margin-top: 24px; }
 
     /* FEATURES SECTION */
     .features-section {
@@ -538,7 +554,7 @@
       .matrix-scroll { margin: 0; border-radius: 16px; }
       .pricing-section { padding: 80px 24px; }
       .pricing-mission { grid-template-columns: 1fr; gap: 28px; padding: 40px 32px; margin-bottom: 40px; }
-      .pricing-tiers { grid-template-columns: 1fr; gap: 16px; }
+      .pricing-tiers { grid-template-columns: 1fr !important; gap: 16px; }
       .cta-band { margin: 0 20px 60px; padding: 64px 32px; }
       footer {
         padding: 32px 24px;
@@ -614,7 +630,13 @@
 
 <!-- MISSION BAND -->
 <div class="mission-band">
-  <p class="fade-up fade-up-1">"Manna is <strong>free for any organisation that cannot afford it.</strong> For those who can, your contribution keeps it free for those who can't. That is the mission."</p>
+  <blockquote class="fade-up fade-up-1">
+    <p>Our mission is to help people find, build and grow in community as we walk in discipleship together with Jesus Christ. Humbled in knowing that <strong>man does not live on bread alone but on every word that comes from the mouth of the Lord.</strong> — DEU 8:3 NIV. And what better way to discover His grace than together, and that is why we built Manna.</p>
+    <p class="quote-attribution">Sean Abbood, Founder</p>
+    <div class="quote-cta">
+      <a href="../index.html#name" class="btn-outline">Read his story</a>
+    </div>
+  </blockquote>
 </div>
 
 <!-- FEATURES SECTION -->
@@ -856,83 +878,41 @@
 <section class="pricing-section" id="pricing">
   <div class="section-header">
     <p class="kicker">Pricing</p>
-    <h2>Affordable by design.<br><span>Free if needed.</span></h2>
-    <p class="section-sub">zanmanna is a non-profit. Our mission is to put Manna in the hands of every organisation that needs it, regardless of financial capacity. For those who can give, your contribution makes that possible.</p>
+    <h2>Good news?<br><span>The best surprise.</span></h2>
+    <p class="section-sub">zanmanna is a non-profit. We designed the Manna app to be free for every church, rehabilitation centre, and community that needs it. No tiers. No hidden fees. No organisation turned away.</p>
   </div>
 
-  <div class="pricing-mission">
-    <div>
-      <h3>No organisation is turned away because of cost.</h3>
-      <p>If your organisation is serving people in recovery and cannot afford the platform, reach out. We will find a way to make it work. That is the promise.</p>
-    </div>
-    <div class="pricing-mission-note">
-      <p><strong>Why do we charge at all?</strong> Manna takes significant time, care, and cost to build and maintain. For organisations that have the capacity to give, your contribution directly funds the platform for those who cannot. You are not just paying for software. You are funding access for others.</p>
-    </div>
-  </div>
-
-  <div class="pricing-tiers">
-
-    <div class="tier-card">
-      <p class="tier-label">Small Organisation</p>
-      <p class="tier-range">1 to 50 users</p>
-      <p class="tier-price"><sup>€</sup>499</p>
-      <p class="tier-period">per year</p>
-      <div class="tier-divider"></div>
-      <ul class="tier-features">
-        <li>Up to 50 active users</li>
-        <li>All 6 core features included</li>
-        <li>zanmanna global devotional content</li>
-        <li>Join code onboarding</li>
-        <li>Crisis alert routing</li>
-        <li>Ongoing platform updates</li>
-      </ul>
-      <div class="tier-cta">
-        <a href="../index.html#contact" class="btn-outline">Get in touch</a>
-      </div>
-    </div>
+  <div class="pricing-tiers" style="grid-template-columns: 1fr 1fr; max-width: 860px;">
 
     <div class="tier-card featured">
-      <p class="tier-label">Medium Organisation</p>
-      <p class="tier-range">51 to 100 users</p>
-      <p class="tier-price"><sup>€</sup>999</p>
-      <p class="tier-period">per year</p>
+      <p class="tier-label">For every organisation</p>
+      <p class="tier-price" style="font-size: clamp(40px, 6vw, 64px); margin-bottom: 4px;">Free.</p>
+      <p class="tier-period">always and for everyone</p>
       <div class="tier-divider"></div>
       <ul class="tier-features">
-        <li>Up to 100 active users</li>
         <li>All 6 core features included</li>
         <li>zanmanna global devotional content</li>
+        <li>Unlimited users</li>
         <li>Join code onboarding</li>
         <li>Crisis alert routing</li>
         <li>Ongoing platform updates</li>
       </ul>
       <div class="tier-cta">
-        <a href="../index.html#contact" class="btn-support">Get in touch</a>
+        <a href="../index.html#contact" class="btn-support">Get your community set up →</a>
       </div>
     </div>
 
     <div class="tier-card">
-      <p class="tier-label">Large Organisation</p>
-      <p class="tier-range">101 to 300 users</p>
-      <p class="tier-price"><sup>€</sup>1,999</p>
-      <p class="tier-period">per year</p>
-      <div class="tier-divider"></div>
-      <ul class="tier-features">
-        <li>Up to 300 active users</li>
-        <li>All 6 core features included</li>
-        <li>zanmanna global devotional content</li>
-        <li>Join code onboarding</li>
-        <li>Crisis alert routing</li>
-        <li>Ongoing platform updates</li>
-      </ul>
+      <p class="tier-label">Support the mission</p>
+      <h3 style="font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: var(--dark); margin-bottom: 16px; line-height: 1.2;">Help us bring Manna to the world.</h3>
+      <p style="font-size: 14px; line-height: 1.7; color: var(--taupe-dark); letter-spacing: -0.01em; flex: 1;">Manna is free because we believe access to community and faith tools should never depend on finances. But building and maintaining this platform takes real time, care, and cost.</p>
+      <p style="font-size: 14px; line-height: 1.7; color: var(--taupe-dark); letter-spacing: -0.01em; margin-top: 12px;">If Manna has served your community, or you simply believe in what we are building, your support helps us reach more churches, rehabilitation centres, and communities across the globe. Give as your heart desires.</p>
+      <div class="tier-divider" style="margin-top: 24px;"></div>
       <div class="tier-cta">
-        <a href="../index.html#contact" class="btn-outline">Get in touch</a>
+        <a href="../index.html#contact" class="btn-outline">Support our mission →</a>
       </div>
     </div>
 
-  </div>
-
-  <div class="pricing-footnote">
-    <p>Need a custom arrangement? More than 300 users? Serving multiple sites? <a href="../index.html#contact" style="color: var(--taupe-dark); text-decoration: underline; text-underline-offset: 3px;">Reach out</a> and we will work something out together.</p>
   </div>
 </section>
 
