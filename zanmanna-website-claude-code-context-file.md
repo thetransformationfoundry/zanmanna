@@ -319,7 +319,7 @@ zanmanna-website/
 - **Architecture Band:** Dark card explaining multi-tenant model, global vs org content streams, join code onboarding, platform details
 - **Roles Section:** Six role cards (Global Admin, Org Admin, Org Partner, Org Guest, Org Past Guest, Revoked) each with colour-coded badge + description
 - **Access Matrix Table:** Full permission table — 20 features x 5 roles. Grouped by section (Devotionals, Bible, Prayer Wall, Community Wall, Private Journal, Emergency, User Management). Horizontally scrollable on mobile.
-- **Pricing Section:** Mission statement card (dark, 2-col) explaining free-if-needed ethos + why we charge. Three tier cards: 1-50 users €499/yr, 51-100 users €999/yr (featured/dark), 101-300 users €1,999/yr. Footnote for custom/large orgs.
+- **Pricing Section:** Headline "Good news? The best surprise." Two cards side by side: Card 1 (featured/dark) — "Free." always and for everyone, all features listed, CTA to get set up. Card 2 (light) — "Support the mission", explains the free model is funded by donations, CTA "Support our mission". No tiers, no prices. Manna is fully free for all organisations.
 - **CTA Band:** Dark card — "Bring Manna to your community" — links to contact form and sign-in
 - **Footer:** Same as index.html — logo, copyright, back-to-top
 - **Entry point:** "Product Overview →" button added to `features-footer` div in index.html's `#app` section
@@ -340,4 +340,4 @@ zanmanna-website/
 
 ---
 
-*Last updated: Session — manna-product-overview.html created and sign-in.html updated to three cards (branch: manna-app-product-overview-page). Product overview page includes expanded feature detail cards, role access matrix table with rotate-to-landscape mobile prompt, and pricing tiers. "Product Overview →" CTA added to index.html features footer and app showcase carousel. sign-in.html restructured from 2 to 3 cards covering returning members, new members with join code, and new org registration.*
+*Last updated: Session — pricing model updated to fully free (no tiers). Pricing section redesigned to two cards: "Free." announcement card and "Support the mission" donation card. Mission band updated to founder quote with scripture reference DEU 8:3 NIV, Sean Abbood attribution, and "Read his story" CTA. Manna pricing model: free for all organisations, funded by voluntary donations.*
