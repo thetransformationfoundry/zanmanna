@@ -526,10 +526,13 @@ The "changes" array should list 3-6 concise improvements made (spelling, grammar
       });
 
       const data  = await resp.json();
-      console.log('API response:', JSON.stringify(data));
+      if (data.type === 'error') {
+        const msg = data.error?.message || 'API error';
+        if (data.error?.type === 'overloaded_error') throw new Error('Claude is busy right now. Please try again in a moment.');
+        throw new Error(msg);
+      }
       const raw   = (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('').trim();
       const clean = raw.replace(/```json|```/g, '').trim();
-      console.log('Parsed text:', clean);
       const parsed = JSON.parse(clean);
 
       document.getElementById('original-text').textContent  = input;
