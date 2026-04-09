@@ -11,8 +11,8 @@ export default {
     const body = await request.text();
 
     let anthropicResp;
-    for (let attempt = 0; attempt < 4; attempt++) {
-      if (attempt > 0) await new Promise(r => setTimeout(r, 1000 * attempt));
+    for (let attempt = 0; attempt < 3; attempt++) {
+      if (attempt > 0) await new Promise(r => setTimeout(r, 2000));
       anthropicResp = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
         headers: {
