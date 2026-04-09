@@ -531,7 +531,7 @@ The "changes" array should list 3-6 concise improvements made (spelling, grammar
         if (data.error?.type === 'overloaded_error') throw new Error('Claude is busy right now. Please try again in a moment.');
         throw new Error(msg);
       }
-      const raw   = (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('').trim();
+      const raw  = (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('').trim();
       const match = raw.match(/\{[\s\S]*\}/);
       if (!match) throw new Error('No JSON found in response');
       const parsed = JSON.parse(match[0]);
@@ -558,7 +558,7 @@ The "changes" array should list 3-6 concise improvements made (spelling, grammar
       results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     } catch(e) {
-      errEl.textContent    = 'Something went wrong: ' + e.message;
+      errEl.textContent    = 'Something went wrong. Please try again.';
       errEl.style.display  = 'block';
     } finally {
       btn.disabled          = false;
