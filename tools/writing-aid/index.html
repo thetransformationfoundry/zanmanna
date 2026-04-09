@@ -519,15 +519,17 @@ The "changes" array should list 3-6 concise improvements made (spelling, grammar
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: 'claude-sonnet-4-6',
-          max_tokens: 1000,
+          max_tokens: 2048,
           system: systemPrompt,
           messages: [{ role: 'user', content: `Please polish this text:\n\n${input}` }]
         })
       });
 
       const data  = await resp.json();
+      console.log('API response:', JSON.stringify(data));
       const raw   = (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('').trim();
       const clean = raw.replace(/```json|```/g, '').trim();
+      console.log('Parsed text:', clean);
       const parsed = JSON.parse(clean);
 
       document.getElementById('original-text').textContent  = input;
