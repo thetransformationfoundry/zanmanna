@@ -1,7 +1,6 @@
 export default {
   async fetch(request, env) {
 
-    // Only allow POST
     if (request.method === 'OPTIONS') {
       return corsResponse();
     }
@@ -9,7 +8,6 @@ export default {
       return new Response('Method not allowed', { status: 405 });
     }
 
-    // Forward request body to Anthropic
     const body = await request.text();
     const anthropicResp = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -27,7 +25,7 @@ export default {
       status: anthropicResp.status,
       headers: {
         'Content-Type':                'application/json',
-        'Access-Control-Allow-Origin': 'https://zanmanna.com',
+        'Access-Control-Allow-Origin': '*',
       },
     });
   }
@@ -36,7 +34,7 @@ export default {
 function corsResponse() {
   return new Response(null, {
     headers: {
-      'Access-Control-Allow-Origin':  'https://zanmanna.com',
+      'Access-Control-Allow-Origin':  '*',
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
     },

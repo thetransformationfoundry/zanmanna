@@ -94,6 +94,12 @@ zanmanna-website/
 │   ├── manna.html                      ← Manna app deep dive (to build)
 │   ├── about.html                      ← About zanmanna (to build)
 │   └── partners.html                   ← Partner centres (to build)
+├── tools/
+│   ├── writing-aid/
+│   │   └── index.html                  ← PIN-protected writing aid tool (complete) — zanmanna.com/tools/writing-aid/
+│   └── writing-aid-proxy/
+│       ├── worker.js                   ← Cloudflare Worker — proxies Anthropic API requests
+│       └── wrangler.toml               ← Wrangler config for deployment
 ├── assets/
 │   ├── images/
 │   │   ├── zanmanna_logo.svg
@@ -328,6 +334,22 @@ zanmanna-website/
 
 ---
 
+## Writing Aid Tool (Complete)
+
+- **URL:** zanmanna.com/tools/writing-aid/
+- **File:** `tools/writing-aid/index.html`
+- **Access:** PIN-protected — Sean only. PIN stored client-side (acceptable for single user).
+- **Session:** `sessionStorage` keeps the user unlocked for the browser session. Lock button in nav to manually re-lock.
+- **4 writing modes:** Devotional, Pastoral / Email, Sermon / Teaching, General — each with a tailored system prompt
+- **API:** Calls Cloudflare Worker proxy at `https://writing-aid-proxy.zanmanna.workers.dev` — never calls Anthropic directly from the browser
+- **Cloudflare Worker:** `tools/writing-aid-proxy/worker.js` — deployed via Wrangler. `ANTHROPIC_API_KEY` stored as a Cloudflare Worker secret (not in code).
+- **Model:** `claude-sonnet-4-20250514`
+- **Output:** Side-by-side original vs polished, plus bullet list of improvements. Copy to clipboard button.
+- **XSS protection:** Changes list rendered via `textContent` not `innerHTML`
+- **CORS:** Worker only allows requests from `https://zanmanna.com`
+
+---
+
 ## What NOT to Change
 - Brand colours — fixed
 - Font — Inter only
@@ -343,3 +365,5 @@ zanmanna-website/
 ---
 
 *Last updated: Session — his-story.html built as long-form founder editorial page. Hero has 2-col grid (text left, circular photo right) on desktop, stacked centred on mobile. Story uses pull quotes, scripture blocks, and side notes. "Read his story" CTA on manna-product-overview.html links to his-story.html. sean_abbood_founder.png added to assets/images.*
+
+*Last updated: Session — Writing Aid tool built and deployed. PIN-protected admin tool at zanmanna.com/tools/writing-aid/. Cloudflare Worker proxy deployed at writing-aid-proxy.zanmanna.workers.dev to keep Anthropic API key off the client. Wrangler CLI used to deploy worker and store API key as a secret.*

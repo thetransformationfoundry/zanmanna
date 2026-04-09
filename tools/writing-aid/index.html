@@ -518,7 +518,7 @@ The "changes" array should list 3-6 concise improvements made (spelling, grammar
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
+          model: 'claude-sonnet-4-6',
           max_tokens: 1000,
           system: systemPrompt,
           messages: [{ role: 'user', content: `Please polish this text:\n\n${input}` }]
@@ -552,7 +552,7 @@ The "changes" array should list 3-6 concise improvements made (spelling, grammar
       results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     } catch(e) {
-      errEl.textContent    = 'Something went wrong. Please try again.';
+      errEl.textContent    = 'Something went wrong: ' + e.message;
       errEl.style.display  = 'block';
     } finally {
       btn.disabled          = false;
