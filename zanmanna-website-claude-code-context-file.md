@@ -341,6 +341,7 @@ zanmanna-website/
 - **Access:** PIN-protected — Sean only. PIN stored client-side (acceptable for single user).
 - **Session:** `sessionStorage` keeps the user unlocked for the browser session. Lock button in nav to manually re-lock.
 - **4 writing modes:** Devotional, Pastoral / Email, Sermon / Teaching, General — each with a tailored system prompt
+- **Universal prompt rules (all modes):** appended to every system prompt in `index.html`. (1) Reverential capitalization — capitalize words/pronouns referring to God or Jesus (He, Him, His, You, Your, etc.), but not when they refer to an ordinary person. (2) Never alter quoted Scripture — reproduce verses exactly as written, no spelling/grammar/wording changes. A UI tip under the input box tells users to wrap scripture in "quotation marks" so it is reliably recognized.
 - **API:** Calls Cloudflare Worker proxy at `https://writing-aid-proxy.zanmanna.workers.dev` — never calls Anthropic directly from the browser
 - **Cloudflare Worker:** `tools/writing-aid-proxy/worker.js` — deployed via Wrangler. `ANTHROPIC_API_KEY` stored as a Cloudflare Worker secret (not in code).
 - **Model:** `claude-sonnet-4-20250514`
@@ -367,3 +368,5 @@ zanmanna-website/
 *Last updated: Session — his-story.html built as long-form founder editorial page. Hero has 2-col grid (text left, circular photo right) on desktop, stacked centred on mobile. Story uses pull quotes, scripture blocks, and side notes. "Read his story" CTA on manna-product-overview.html links to his-story.html. sean_abbood_founder.png added to assets/images.*
 
 *Last updated: Session — Writing Aid tool built and deployed. PIN-protected admin tool at zanmanna.com/tools/writing-aid/. Cloudflare Worker proxy deployed at writing-aid-proxy.zanmanna.workers.dev to keep Anthropic API key off the client. Wrangler CLI used to deploy worker and store API key as a secret.*
+
+*Last updated: Session — Added two universal prompt rules to the Writing Aid (all modes), edited only in `tools/writing-aid/index.html`: reverential capitalization of God/Jesus pronouns, and never altering quoted Scripture. Added a UI tip under the input box advising users to wrap scripture in quotation marks. No worker change needed — `worker.js` is a pure pass-through that forwards the request body (including the system prompt) verbatim to the Anthropic API. Committed (c97ce32, 4fcd4af) and pushed to manna-app-product-overview-page.*
