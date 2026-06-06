@@ -232,6 +232,12 @@
       margin-top: 8px; margin-bottom: 1.2rem;
     }
     .char-count { font-size: 12px; color: var(--taupe-light); }
+    .tip {
+      font-size: 12px;
+      color: var(--taupe);
+      margin: -0.5rem 0 1.5rem;
+      line-height: 1.5;
+    }
 
     .polish-btn {
       display: block; width: 100%;
@@ -393,6 +399,8 @@
         <span class="char-count" id="char-count">0 words</span>
         <span class="char-count">Mode: <span id="mode-label">Devotional</span></span>
       </div>
+
+      <p class="tip">Tip: Pronouns referring to God or Jesus (He, Him, His, Your) are always capitalized. When quoting Scripture, put the verse in "quotation marks" so it's left exactly as written.</p>
 
       <button class="polish-btn" id="polish-btn" onclick="polish()">Polish My Writing</button>
       <div class="loading-msg" id="loading-msg">Reading your draft carefully — this may take a few seconds...</div>
