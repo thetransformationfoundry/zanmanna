@@ -530,7 +530,7 @@ The "changes" array should list 3-6 concise improvements made (spelling, grammar
     // Claude echoes the whole polished text back inside the JSON, so the output
     // budget has to cover the input again plus the changes list and JSON overhead.
     // Undersizing it truncates the reply mid-JSON and the parse fails.
-    const MAX_OUTPUT_TOKENS = 16000;
+    const MAX_OUTPUT_TOKENS = 32000;  // matches the Manna client; streaming keeps this under the proxy timeout
     const MIN_OUTPUT_TOKENS = 4096;
     const TOO_LONG_MSG = 'This text is a bit long to polish in one go — try a section at a time (a few paragraphs).';
     const estTokens = Math.ceil(input.length / 3);  // conservative for prose
