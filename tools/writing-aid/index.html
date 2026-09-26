@@ -527,27 +527,101 @@ Return ONLY a valid JSON object with exactly these fields:
 
 The "changes" array should list 3-6 concise improvements made (spelling, grammar, clarity, flow, punctuation). Do not include any text outside the JSON object.`;
 
-    try {
+    // Claude echoes the whole polished text back inside the JSON, so the output
+    // budget has to cover the input again plus the changes list and JSON overhead.
+    // Undersizing it truncates the reply mid-JSON and the parse fails.
+    const MAX_OUTPUT_TOKENS = 16000;
+    const MIN_OUTPUT_TOKENS = 4096;
+    const TOO_LONG_MSG = 'This text is a bit long to polish in one go — try a section at a time (a few paragraphs).';
+    const estTokens = Math.ceil(input.length / 3);  // conservative for prose
+    const needed    = estTokens * 2 + 1024;
+
+    // Stream the response. A large polish takes long enough that a buffered
+    // reply sits silent past Cloudflare's ~100s idle limit and dies with a 524.
+    // Streaming keeps bytes flowing, so we send stream:true and read the SSE
+    // body, assembling only the text deltas — Sonnet 5 can also emit
+    // thinking/signature deltas, which are not part of the answer.
+    async function askClaude(maxTokens) {
       const resp = await fetch('https://writing-aid-proxy.zanmanna.workers.dev', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-6',
-          max_tokens: 2048,
+          model: 'claude-sonnet-5',
+          max_tokens: maxTokens,
+          stream: true,
           system: systemPrompt,
           messages: [{ role: 'user', content: `Please polish this text:\n\n${input}` }]
         })
       });
 
-      const data  = await resp.json();
-      if (data.type === 'error') {
-        const msg = data.error?.message || 'API error';
-        if (data.error?.type === 'overloaded_error') throw new Error('Claude is busy right now. Please try again in a moment.');
+      // Errors come back as JSON even when a stream was requested, so a
+      // non-OK response or missing body is an error to surface, not a stream.
+      if (!resp.ok || !resp.body) {
+        let msg = 'API error';
+        try {
+          const err = await resp.json();
+          if (err.error?.type === 'overloaded_error') throw new Error('Claude is busy right now. Please try again in a moment.');
+          msg = err.error?.message || msg;
+        } catch (_) {}
         throw new Error(msg);
       }
-      const raw  = (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('').trim();
-      const match = raw.match(/\{[\s\S]*\}/);
-      if (!match) throw new Error('No JSON found in response');
+
+      const reader   = resp.body.getReader();
+      const decoder  = new TextDecoder();
+      let buffer     = '';
+      let text       = '';
+      let stopReason = null;
+
+      const handleData = (dataStr) => {
+        if (!dataStr || dataStr === '[DONE]') return;
+        let evt;
+        try { evt = JSON.parse(dataStr); } catch (_) { return; }
+        if (evt.type === 'error') {
+          if (evt.error?.type === 'overloaded_error') throw new Error('Claude is busy right now. Please try again in a moment.');
+          throw new Error(evt.error?.message || 'API error');
+        }
+        // Only text_delta is the answer; thinking_delta / signature_delta / ping are ignored.
+        if (evt.type === 'content_block_delta' && evt.delta?.type === 'text_delta') {
+          text += evt.delta.text;
+        } else if (evt.type === 'message_delta' && evt.delta?.stop_reason) {
+          stopReason = evt.delta.stop_reason;
+        }
+      };
+
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        let nl;
+        while ((nl = buffer.indexOf('\n')) !== -1) {
+          const line = buffer.slice(0, nl).trim();
+          buffer = buffer.slice(nl + 1);
+          if (line.startsWith('data:')) handleData(line.slice(5).trim());
+        }
+      }
+      const tail = buffer.trim();  // flush a trailing line with no newline
+      if (tail.startsWith('data:')) handleData(tail.slice(5).trim());
+
+      return { text: text.trim(), stopReason };
+    }
+
+    try {
+      if (needed > MAX_OUTPUT_TOKENS) throw new Error(TOO_LONG_MSG);
+
+      let maxTokens = Math.min(MAX_OUTPUT_TOKENS, Math.max(MIN_OUTPUT_TOKENS, needed));
+      let { text: raw, stopReason } = await askClaude(maxTokens);
+
+      // A verbose changes list can still hit the cap — retry once with more room.
+      if (stopReason === 'max_tokens' && maxTokens < MAX_OUTPUT_TOKENS) {
+        maxTokens = Math.min(MAX_OUTPUT_TOKENS, Math.ceil(maxTokens * 1.5));
+        ({ text: raw, stopReason } = await askClaude(maxTokens));
+      }
+      if (stopReason === 'max_tokens') throw new Error(TOO_LONG_MSG);
+
+      // Models sometimes wrap the JSON in ```json fences despite the instruction.
+      const unfenced = raw.replace(/^\s*```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '');
+      const match = unfenced.match(/\{[\s\S]*\}/);
+      if (!match) throw new Error('The writing aid returned something unexpected. Please try again, or polish a shorter section.');
       const parsed = JSON.parse(match[0]);
 
       document.getElementById('original-text').textContent  = input;
@@ -572,7 +646,7 @@ The "changes" array should list 3-6 concise improvements made (spelling, grammar
       results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     } catch(e) {
-      errEl.textContent    = 'Something went wrong. Please try again.';
+      errEl.textContent    = e.message || 'Something went wrong. Please try again.';
       errEl.style.display  = 'block';
     } finally {
       btn.disabled          = false;
