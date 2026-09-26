@@ -527,27 +527,53 @@ Return ONLY a valid JSON object with exactly these fields:
 
 The "changes" array should list 3-6 concise improvements made (spelling, grammar, clarity, flow, punctuation). Do not include any text outside the JSON object.`;
 
-    try {
+    // Claude echoes the whole polished text back inside the JSON, so the output
+    // budget has to cover the input again plus the changes list and JSON overhead.
+    // Undersizing it truncates the reply mid-JSON and the parse fails.
+    const MAX_OUTPUT_TOKENS = 16000;  // non-streaming ceiling, stays inside the proxy timeout
+    const MIN_OUTPUT_TOKENS = 4096;
+    const TOO_LONG_MSG = 'This text is a bit long to polish in one go — try a section at a time (a few paragraphs).';
+    const estTokens = Math.ceil(input.length / 3);  // conservative for prose
+    const needed    = estTokens * 2 + 1024;
+
+    async function askClaude(maxTokens) {
       const resp = await fetch('https://writing-aid-proxy.zanmanna.workers.dev', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-6',
-          max_tokens: 2048,
+          model: 'claude-sonnet-5',
+          max_tokens: maxTokens,
           system: systemPrompt,
           messages: [{ role: 'user', content: `Please polish this text:\n\n${input}` }]
         })
       });
-
-      const data  = await resp.json();
+      const data = await resp.json();
       if (data.type === 'error') {
         const msg = data.error?.message || 'API error';
         if (data.error?.type === 'overloaded_error') throw new Error('Claude is busy right now. Please try again in a moment.');
         throw new Error(msg);
       }
+      return data;
+    }
+
+    try {
+      if (needed > MAX_OUTPUT_TOKENS) throw new Error(TOO_LONG_MSG);
+
+      let maxTokens = Math.min(MAX_OUTPUT_TOKENS, Math.max(MIN_OUTPUT_TOKENS, needed));
+      let data = await askClaude(maxTokens);
+
+      // A verbose changes list can still hit the cap — retry once with more room.
+      if (data.stop_reason === 'max_tokens' && maxTokens < MAX_OUTPUT_TOKENS) {
+        maxTokens = Math.min(MAX_OUTPUT_TOKENS, Math.ceil(maxTokens * 1.5));
+        data = await askClaude(maxTokens);
+      }
+      if (data.stop_reason === 'max_tokens') throw new Error(TOO_LONG_MSG);
+
       const raw  = (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('').trim();
-      const match = raw.match(/\{[\s\S]*\}/);
-      if (!match) throw new Error('No JSON found in response');
+      // Models sometimes wrap the JSON in ```json fences despite the instruction.
+      const unfenced = raw.replace(/^\s*```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '');
+      const match = unfenced.match(/\{[\s\S]*\}/);
+      if (!match) throw new Error('The writing aid returned something unexpected. Please try again, or polish a shorter section.');
       const parsed = JSON.parse(match[0]);
 
       document.getElementById('original-text').textContent  = input;
@@ -572,7 +598,7 @@ The "changes" array should list 3-6 concise improvements made (spelling, grammar
       results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     } catch(e) {
-      errEl.textContent    = 'Something went wrong. Please try again.';
+      errEl.textContent    = e.message || 'Something went wrong. Please try again.';
       errEl.style.display  = 'block';
     } finally {
       btn.disabled          = false;
